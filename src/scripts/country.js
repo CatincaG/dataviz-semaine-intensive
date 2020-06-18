@@ -12,16 +12,16 @@ class Country
         this.violenceDomain = document.querySelector('.violence-content')
 
         // Set functions
-        this.setCurrentClassToButton()
-        //this.displayDataAccordingToDomain()
+        this.setCurrentDomain()
     }
 
-    setCurrentClassToButton()
+    setCurrentDomain()
     {
         this.domainsButton.forEach(_button =>
         {
             _button.addEventListener('click', () => 
             {
+                /** Set current button */
                 // Change the state of the current button
                 const initialButton = document.querySelector('a.js-current-button')
                 initialButton.classList.remove('js-current-button')
@@ -29,6 +29,7 @@ class Country
                 // Change the state of the button clicked by the user
                 _button.classList.add('js-current-button')
 
+                /** Display right elements according to the category selected */
                 if(_button.classList.contains('studies-button') && this.studiesDomain.classList.contains('js-hidden'))
                 {
                     this.studiesDomain.classList.remove('js-hidden')
