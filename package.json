@@ -1,19 +1,20 @@
 {
-  "name": "datamaps",
-  "version": "0.5.9",
-  "description": "map",
+  "name": "dataviz-semaine-intensive",
+  "version": "1.0.0",
+  "description": "Made by :",
   "main": "index.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "datamaps": "^0.5.9"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CatincaG/dataviz-semaine-intensive.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
