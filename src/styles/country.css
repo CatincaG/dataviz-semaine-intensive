@@ -1,0 +1,62 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+
+body
+{
+    font-family: 'Rubik', sans-serif;
+    background-color: #DED9EE;
+}
+
+/* Text */
+a
+{
+    font-size: 16px;
+    text-decoration: none;
+    color: rgb(15, 15, 15);
+}
+
+p.value
+{
+    font-size: 52px;
+    font-weight: 700;
+    color: #5941A9;
+}
+
+p.description
+{
+    font-size: 24px;
+    font-weight: 400;
+    color: #5941A9;
+}
+
+/* Elements */
+
+.domains
+{
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 120px;
+    flex-direction: column;
+}
+
+.domains a
+{
+    margin: 16px;
+}
+
+/* js elements */
+
+.js-hidden
+{
+    pointer-events: none;
+    opacity: 0;
+}
+
+.domains a.js-current-button
+{
+    color: #5941A9;
+}
