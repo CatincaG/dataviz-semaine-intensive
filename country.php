@@ -92,26 +92,39 @@
         <h2><?= $dataStudies[22]->country ?></h2>
         <p class="value"><?= $dataStudies[22]->value.'%' ?></p>
         <p class="description">of students are women</p>
+        <p>Studies category</p>
     </div>
     <!-- Work category -->
     <div class="work-content js-hidden">
         <h2><?= $dataWork[10]->country ?></h2>
-        <p><?= $dataWork[10]->value.'%' ?></p>
+        <p class="description">Women earn</p>
+        <p class="value"><?= $dataWork[10]->value.'%' ?></p>
+        <p class="description">less than men</p>
+        <p>Work category</p>
     </div>
     <!-- Power category -->
     <div class="power-content js-hidden">
         <h2><?= $dataPower[6]->country ?></h2>
-        <p><?= $dataPower[6]->value.'%' ?></p>
+        <p class="description">For 100 CEO, only</p>
+        <p class="value"><?= $dataPower[6]->value.'%' ?></p>
+        <p class="description">are woman</p>
+        <p>Power category</p>
     </div>
     <!-- Health category -->
     <div class="health-content js-hidden">
         <h2><?= $dataHealth[13]->country ?></h2>
-        <p><?= $dataHealth[13]->value.'%' ?></p>
+        <p class="description">Women live</p>
+        <p class="value"><?= $dataHealth[13]->value.'%' ?></p>
+        <p class="description">years more than a men</p>
+        <p>Health category</p>
     </div>
     <!-- Violence category -->
     <div class="violence-content js-hidden">
         <h2><?= $dataViolence[17]->country ?></h2>
-        <p><?= $dataViolence[17]->value.'%' ?></p>
+        <p class="description">In 2017,</p>
+        <p class="value"><?= $dataViolence[17]->value.'%' ?></p>
+        <p class="description"> woman were raped</p>
+        <p>Violence category</p>
     </div>
     <!-- 5 domains navigation -->
     <div class="domains">
@@ -121,5 +134,7 @@
         <a href="#" class="health-button">HEALTH</a>
         <a href="#" class="violence-button">VIOLENCE</a>
     </div>
+
+    <script src="./src/scripts/country.js"></script>
 </body>
 </html>

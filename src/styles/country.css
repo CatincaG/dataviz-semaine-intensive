@@ -20,7 +20,7 @@ a
 
 p.value
 {
-    font-size: 52px;
+    font-size: 72px;
     font-weight: 700;
     color: #5941A9;
 }
@@ -33,6 +33,11 @@ p.description
 }
 
 /* Elements */
+
+div
+{
+    position: absolute;
+}
 
 .domains
 {
@@ -58,5 +63,6 @@ p.description
 
 .domains a.js-current-button
 {
+    font-size: 24px;
     color: #5941A9;
 }
