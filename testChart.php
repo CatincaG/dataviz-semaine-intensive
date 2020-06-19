@@ -10,10 +10,11 @@ curl_close($curl);
 //Json decode datastudies
 $datastudies = json_decode($datastudies);
 
-// Show datastudies
-// echo '<pre>';
-// var_dump($datastudies);
-// echo '</pre>';
+// Convert array of objects to array of numbers
+$years = array_map(function($d) {
+  return $d->year;
+}, $datastudies);
+$years = array_unique($years);
 
 ?>
 
@@ -28,10 +29,6 @@ $datastudies = json_decode($datastudies);
 <body>
 <canvas id="myChart" width="800" height="450"></canvas>
 
-<!-- <?php foreach ($datastudies as $key => $dataItem):?>
-  <p><?= $dataItem->year ?></p>
-<?php endforeach ?> -->
-
 <script>
   const ctx = document.getElementById('myChart').getContext('2d')
 
@@ -43,9 +40,11 @@ $datastudies = json_decode($datastudies);
       // Years
       labels: 
       [
-        <?php foreach ($datastudies as $dataItem):?>
-          <?= $dataItem->year.',' ?>
-        <?php endforeach ?>
+        <?php
+        foreach ($years as $year):
+          echo $year.',';
+        endforeach;
+        ?>
       ],
 
       datasets: [{
@@ -53,16 +52,14 @@ $datastudies = json_decode($datastudies);
       label: 'Woman',
       data: 
       [
-        <?php foreach ($datastudies as $dataItem):?>
-          <?php 
+        <?php 
+        foreach ($datastudies as $dataItem):
           if($dataItem->sex === 'W')
           {
-          ?>
-            <?= $dataItem->value.',' ?>
-          <?php
+          echo str_replace(',','.',$dataItem->value).',';
           }
-          ?>
-        <?php endforeach ?>
+        endforeach;
+        ?>
       ],
       backgroundColor: "rgba(153,255,51,0.4)"
       }, {
@@ -71,16 +68,14 @@ $datastudies = json_decode($datastudies);
       label: 'Men',
       data: 
       [
-        <?php foreach ($datastudies as $dataItem):?>
-          <?php 
+        <?php
+        foreach ($datastudies as $dataItem):
           if($dataItem->sex === 'M')
           {
-          ?>
-            <?= $dataItem->value.',' ?>
-          <?php
+            echo str_replace(',','.',$dataItem->value).',';
           }
-          ?>
-        <?php endforeach ?>
+        endforeach;
+        ?>
       ],
       backgroundColor: "rgba(255,153,0,0.4)"
       }]
