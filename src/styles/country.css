@@ -32,11 +32,29 @@ p.description
     color: #5941A9;
 }
 
+h3
+{
+    margin: 24px;
+    text-align: right;
+}
+
 /* Elements */
 
 div
 {
     position: absolute;
+}
+
+.studies-content
+{
+    top: 12vw;
+    right: calc(50% - 12vw);
+}
+
+.work-content
+{
+    top: 8vw;
+    left: 24vw;
 }
 
 .domains
