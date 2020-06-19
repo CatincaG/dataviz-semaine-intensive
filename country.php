@@ -1,6 +1,10 @@
 <?php
     include_once './includes/config.php';
 
+    // Get the id of the country
+    $id = $_GET['id'];
+    echo($id);
+
     //Instantiate curl for data studies
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/datastudies');
