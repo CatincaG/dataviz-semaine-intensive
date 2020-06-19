@@ -1,27 +1,60 @@
+<?php
+
+//Instantiate curl for datastudies for SPAIN ONLY
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/datastudies?country=Spain');
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+$datastudies = curl_exec($curl);
+curl_close($curl);
+
+//Json decode datastudies
+$datastudies= json_decode($datastudies);
+
+// Show datastudies
+// echo '<pre>';
+// var_dump($datastudies);
+// echo '</pre>';
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test de Charts.js</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
         <canvas id="myChart"></canvas>
+
+
+<?php
+
+foreach ($datastudies as $dataItem){
+
+?>
+
         <script>
             var ctx = document.getElementById('myChart').getContext('2d');
     
             var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             
             data: {
-                labels: ['2015', '2016', '2017', '2018', '2019'],
+                labels: ['<?= $dataItem->year ?>'],
                 
+
+
+
                 datasets: [{
-    
-    
-                label: 'Femmes',
-                data: [12, 20, 30, 47, 66],
+       
+                label: '<?= $dataItem->sex ?>',
+                data: [<?= $dataItem->value ?>],
                 backgroundColor: "rgba(153,255,51,0.4)"
                 }, {
     
@@ -31,6 +64,8 @@
                 backgroundColor: "rgba(255,153,0,0.4)"
                 }]
             }, 
+
+
             options: {
           legend: { display: true },
           title: {
@@ -45,6 +80,11 @@
     
     </script>
    
+
+   <?php
+}
+?>
+
 
 </body>
 </html>
