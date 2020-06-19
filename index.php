@@ -21,28 +21,29 @@ curl_close($curl);
 
 <head>
     <meta charset="utf-8">
-    <title>European gender gap</title>
+    <title>Mind the gap</title>
     <link rel="stylesheet" href="./src/styles/map.css">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Title -->
+    <h1>Gender equality in Europe</h1>
+    <!-- Category choice -->
+    <div class="categories">
+        <button class="global-button">Global</button>
+        <button class="education-button">Education</button>
+        <button class="work-button">Work</button>
+        <button class="health-button">Health</button>
+        <button class="power-button">Power</button>
+        <button class="violence-button">Violence</button>
+    </div>
+    <!-- Map -->
+    <div id="map-container"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
     <script src="node_modules/datamaps/dist/datamaps.world.min.js"></script>
-
-    <!-- <div class="categories">
-        <button class="js-global">Global</button>
-        <button class="js-education">Education</button>
-        <button class="js-work">Work</button>
-        <button class="js-health">Health</button>
-        <button class="js-power">Power</button>
-        <button class="js-violence">Violence</button>
-    </div> -->
-    <div id="container"></div>
-
     <script src="src/scripts/map.js"></script>
 </body>
-
 </html>

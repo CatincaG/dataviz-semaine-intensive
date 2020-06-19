@@ -5,7 +5,7 @@ const dataset_global = {}
 // Colors
 const paletteScale = d3.scale.linear()
     .domain([30, 60, 120])
-    .range(["white", "#41A95E", "black"])
+    .range(["white", "#FF9D43", "black"])
 
 
 // Set database for the map
@@ -22,13 +22,20 @@ console.log(dataset_global)
 
 // MAP
 const map = new Datamap({
-    element: document.getElementById('container'),
+    element: document.getElementById('map-container'),
     // color if no data
     fills: {
         defaultFill: '#FFFFFF'
     },
     // datas
     data: dataset_global,
+    // hover infos
+    geographyConfig: {
+        highlightBorderColor: '#FFE659',
+        popupTemplate: function (geography, data) {
+            return '<div class="hoverinfo">' + geography.properties.name + '<br>' + data.score + ' '
+        }
+    },
     // Europe mercator view and zoom
     setProjection: function (element) {
         const projection = d3.geo.mercator()
@@ -38,8 +45,10 @@ const map = new Datamap({
         const path = d3.geo.path()
             .projection(projection)
         return { path: path, projection: projection }
-    }
+    },
 })
+
+
 
 
 // Send to the country page on click
