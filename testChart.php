@@ -8,7 +8,7 @@ $datastudies = curl_exec($curl);
 curl_close($curl);
 
 //Json decode datastudies
-$datastudies= json_decode($datastudies);
+$datastudies = json_decode($datastudies);
 
 // Show datastudies
 // echo '<pre>';
@@ -42,14 +42,15 @@ foreach ($datastudies as $dataItem){
         <script>
             var ctx = document.getElementById('myChart').getContext('2d');
     
+
+            // beginning of Chart generation
+
             var myChart = new Chart(ctx, {
             type: 'line',
             
             data: {
                 labels: ['<?= $dataItem->year ?>'],
-                
-
-
+            
 
                 datasets: [{
        
