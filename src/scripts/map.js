@@ -1,61 +1,54 @@
 // Datas
 const datajson = JSON.parse(data)
-// const dataset_global = {}
+const dataset_global = {}
 
+// Colors
+const paletteScale = d3.scale.linear()
+    .domain([30, 60, 120])
+    .range(["white", "#41A95E", "black"])
+
+
+// Set database for the map
 datajson.forEach((_country) => {
-    console.log(_country.country)
-    // console.log(_country.global_score)
-    // const data_global[_country] = { score: _country.global_score, fillColor: "#B3DDBF" };
+    const country = _country.country
+    _country.global_score = parseFloat(_country.global_score)
+    const score = _country.global_score
+    const color = paletteScale(score)
+    dataset_global[country] = { score: score, fillColor: color }
 })
 
-// Datamaps expect data in format:
-// { "USA": { "fillColor": "#42a844", numberOfWhatever: 75},
-//   "FRA": { "fillColor": "#8dc386", numberOfWhatever: 43 } }
 
-// console.log(dataset_global)
+console.log(dataset_global)
 
-// map
+// MAP
 const map = new Datamap({
     element: document.getElementById('container'),
-    // datas
-    // data: dataset_global,
-    // colors
+    // color if no data
     fills: {
-        VERYHIGH: '#41A95E',
-        HIGH: '#67BA7E',
-        MEDIUM: '#8DCB9E',
-        LOW: '#B3DDBF',
-        VERYLOW: '#D9EEDF',
         defaultFill: '#FFFFFF'
     },
-    // Europe mercator view
+    // datas
+    data: dataset_global,
+    // Europe mercator view and zoom
     setProjection: function (element) {
         const projection = d3.geo.mercator()
             .center([15, 53])
             .scale(950)
-            .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+            .translate([element.offsetWidth / 2, element.offsetHeight / 2])
         const path = d3.geo.path()
             .projection(projection)
-        return { path: path, projection: projection };
+        return { path: path, projection: projection }
     }
-});
+})
 
-// Display map
-// console.log(map)
-// Display container with svg
-// const testContainer = document.querySelector('#container')
-// console.log(testContainer)
-// Get path
+
+// Send to the country page on click
+// get country path
 const getPath = document.querySelectorAll('#container svg g path')
-console.log(getPath)
-// Click on the path
-getPath.forEach((_path) => 
-{
-    _path.addEventListener('click', () => 
-    {
-        //console.log('Laisse moi tranquille', _path.classList)
+// click on the country
+getPath.forEach((_path) => {
+    _path.addEventListener('click', () => {
         const idCountry = _path.classList[1]
-        console.log(idCountry)
         window.location.href = `country.php?id=${idCountry}`
     })
 })
