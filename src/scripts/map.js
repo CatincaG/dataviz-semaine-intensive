@@ -40,3 +40,23 @@ const map = new Datamap({
     }
 });
 
+// Display map
+// console.log(map)
+// Display container with svg
+// const testContainer = document.querySelector('#container')
+// console.log(testContainer)
+// Get path
+const getPath = document.querySelectorAll('#container svg g path')
+console.log(getPath)
+// Click on the path
+getPath.forEach((_path) => 
+{
+    _path.addEventListener('click', () => 
+    {
+        //console.log('Laisse moi tranquille', _path.classList)
+        const idCountry = _path.classList[1]
+        console.log(idCountry)
+        window.location.href = `country.php?id=${idCountry}`
+    })
+})
+
