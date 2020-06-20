@@ -3,11 +3,11 @@
 
     // Get the id of the country
     $id = $_GET['id'];
-    echo($id);
+    // echo($id);
 
     //Instantiate curl for data studies
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/datastudies');
+    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/datastudies?id='.$id);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $dataStudies = curl_exec($curl);
     curl_close($curl);
@@ -22,7 +22,7 @@
 
     //Instantiate curl for data work
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/datawork');
+    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/datawork?id='.$id);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $dataWork = curl_exec($curl);
     curl_close($curl);
@@ -37,7 +37,7 @@
 
     //Instantiate curl for data power
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/datapower');
+    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/datapower?id='.$id);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $dataPower = curl_exec($curl);
     curl_close($curl);
@@ -52,7 +52,7 @@
 
     //Instantiate curl for data health
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/datahealth');
+    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/datahealth?id='.$id);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $dataHealth = curl_exec($curl);
     curl_close($curl);
@@ -67,7 +67,7 @@
 
     //Instantiate curl for data violence
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/dataviolence');
+    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/dataviolence?id='.$id);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $dataViolence = curl_exec($curl);
     curl_close($curl);
@@ -91,39 +91,64 @@
     <link rel="stylesheet" href="./src/styles/country.css">
 </head>
 <body>
+<!-- <?php
+    $currentPowerData = array_filter($dataPower, function($d){
+        return $d;
+    });
+
+    // echo '<pre>';
+    // var_dump($dataPower);
+    // echo '</pre>';
+    // exit;
+?>  -->
     <!-- Name of the country -->
-    <h3><?= $dataStudies[22]->country ?></h3>
+    <h3><?= end($dataStudies)->country ?></h3>
     <!-- Studies category -->
     <div class="studies-content">
-        <p class="value"><?= $dataStudies[22]->value.'%' ?></p>
+        <p class="value"><?= end($dataStudies)->value.'%' ?></p>
         <p class="description">of students are women</p>
         <p>Studies category</p>
     </div>
     <!-- Work category -->
     <div class="work-content js-hidden">
         <p class="description">Women earn</p>
-        <p class="value"><?= $dataWork[10]->value.'%' ?></p>
+        <p class="value"><?= end($dataWork)->value.'%' ?></p>
         <p class="description">less than men</p>
         <p>Work category</p>
     </div>
     <!-- Power category -->
     <div class="power-content js-hidden">
         <p class="description">For 100 CEO, only</p>
-        <p class="value"><?= $dataPower[6]->value.'%' ?></p>
+        <p class="value">
+
+        </p>
         <p class="description">are woman</p>
         <p>Power category</p>
     </div>
     <!-- Health category -->
     <div class="health-content js-hidden">
         <p class="description">Women live</p>
-        <p class="value"><?= $dataHealth[13]->value.'%' ?></p>
+        <p class="value">
+        
+        </p>
         <p class="description">years more than a men</p>
         <p>Health category</p>
     </div>
     <!-- Violence category -->
     <div class="violence-content js-hidden">
         <p class="description">In 2017,</p>
-        <p class="value"><?= $dataViolence[17]->value.'%' ?></p>
+        <p class="value">
+            <?php
+                if(!empty($dataViolence))
+                {
+                    echo $dataViolence[0]->value.'%';
+                }
+                else
+                {
+                    echo('There is no data for this country');
+                }
+            ?>
+        </p>
         <p class="description"> woman were raped</p>
         <p>Violence category</p>
     </div>
