@@ -49,11 +49,9 @@ const map = new Datamap({
 })
 
 
-
-
 // Send to the country page on click
 // get country path
-const getPath = document.querySelectorAll('#container svg g path')
+const getPath = document.querySelectorAll('#map-container svg g path')
 // click on the country
 getPath.forEach((_path) => {
     _path.addEventListener('click', () => {
