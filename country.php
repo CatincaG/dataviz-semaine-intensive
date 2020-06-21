@@ -80,6 +80,11 @@
     // var_dump($dataViolence);
     // echo '</pre>';
 
+    // Filtering dataStudies array
+    $currentDataStudies = array_filter($dataStudies, function($d) {
+        return $d->sex === 'W';
+    });
+
     // Filtering dataPower array
     $currentDataPower = array_filter($dataPower, function($d) {
         return $d->sex === 'W' && $d->position === 'CEO (Chief Executive Officer)';
@@ -87,9 +92,17 @@
 
     // Filtering dataHealth array
     $currentDataHealth = array_filter($dataHealth, function($d) {
-        return $d->sex === 'W' && $d->info === 'Healthy life years in absolute value at birth';
+        return $d->sex === 'W' && $d->info === 'Life expectancy in absolute value at birth';
     });
 
+    // Convert array of objects to array of numbers for the chart in order to display only the years once
+    $years = array_map(function($d) {
+        return $d->year;
+    }, $dataStudies);
+    $years = array_unique($years);
+
+    $firstYear = $years[0];
+    $lastYear = end($years);
 ?>
 
 <!DOCTYPE html>
@@ -100,41 +113,142 @@
     <title>European gender gap</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="./src/styles/country.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
-    <!-- Name of the country -->
+    <!-- Name of the country selected -->
     <h3><?= end($dataStudies)->country ?></h3>
-    <!-- Studies category -->
+    <!--
+    *--------------
+    *
+    * Studies category
+    *
+    *--------------
+    * -->
+    <!-- Display data-->
     <div class="studies-content">
-        <p class="value"><?= end($dataStudies)->value.'%' ?></p>
-        <p class="description">of students are women</p>
+        <p class="value"><?= end($currentDataStudies)->value.'%' ?></p>
+        <p class="description">of students are women in <?= end($currentDataStudies)->year ?></p>
     </div>
-    <!-- Work category -->
+    <!-- Illustration studies -->
+    <img src="./assets/svg/illustrations/studies-illustration.svg" class="studies-illustration" alt="graduated girl illustration">
+    <!--Container of the chart-->
+    <div class="chart-container chart-studies" style="position: relative; height:20vh; width:62vw">
+        <canvas id="myChart"></canvas>
+    </div>
+    <!--Script for the chart-->
+    <script>
+    const ctx = document.getElementById('myChart').getContext('2d')
+
+    Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
+    Chart.defaults.global.defaultFontColor = 'black'
+    const myChart = new Chart(ctx, {
+    type: 'line',
+
+        data: {
+        // Years
+        labels: [<?php
+            foreach ($years as $_year):
+                echo $_year.',';
+            endforeach;
+        ?>],
+
+        datasets: [{
+            // Woman
+            label: 'Woman',
+            data: [<?php
+            foreach ($dataStudies as $dataItem): if($dataItem->sex === 'W') {
+                echo str_replace(',','.',$dataItem->value).',';
+            }
+            endforeach;
+            ?>],
+            backgroundColor: "rgba(246, 174, 45, 0.4)"
+            }, {
+
+            // Men
+            label: 'Men',
+            data: [<?php
+            foreach ($dataStudies as $dataItem):
+                if($dataItem->sex === 'M')
+                {
+                echo str_replace(',','.',$dataItem->value).',';
+                }
+            endforeach;
+            ?>],
+            backgroundColor: "rgba(89, 65, 169, 1)"
+        }]
+        },
+
+        options: {
+        legend: { display: true },
+        title: {
+            display: true,
+            text: 'Percentage of women and men students in <?= end($dataStudies)->country?> from <?= $firstYear ?> to <?= $lastYear ?>'
+        }
+        }
+    })
+    </script>
+    <!--End of the script for the chart-->
+    <!--
+    *--------------
+    *
+    * Work category
+    *
+    *--------------
+    * -->
+    <!-- Display data-->
     <div class="work-content js-hidden">
         <p class="description">Women earn</p>
         <p class="value"><?= end($dataWork)->value.'%' ?></p>
         <p class="description">less than men</p>
     </div>
-    <!-- Power category -->
+    <!-- Illustration work -->
+    <img src="" alt="">
+    <!--
+    *--------------
+    *
+    * Power category
+    *
+    *--------------
+    * -->
+    <!-- Display data-->
     <div class="power-content js-hidden">
         <p class="description">For 100 CEO, only</p>
         <p class="value"><?=end($currentDataPower)->value.'%'?></p>
         <p class="description">are woman</p>
     </div>
-    <!-- Health category -->
+    <!-- Illustration power -->
+    <img src="" alt="">
+    <!--
+    *--------------
+    *
+    * Health category
+    *
+    *--------------
+    * -->
+    <!-- Display data-->
     <div class="health-content js-hidden">
-        <p class="description">Women live</p>
-        <p class="value"><?= end($currentDataHealth)->value ?></p>
-        <p class="description">years more than a men</p>
+        <p class="description">Life expectancy for women is</p>
+        <p class="value"><?= intval(end($currentDataHealth)->value).' '.'year old' ?></p>
+        <p class="description">in <?= end($currentDataHealth)->year ?></p>
     </div>
-    <!-- Violence category -->
+    <!-- Illustration health -->
+    <img src="" alt="">
+    <!--
+    *--------------
+    *
+    * Violence category
+    *
+    *--------------
+    * -->
+    <!-- Display data-->
     <div class="violence-content js-hidden">
-        <p class="description">In 2017,</p>
+        <p class="description">In <?= $dataViolence[0]->year ?></p>
         <p class="value">
             <?php
                 if(!empty($dataViolence))
                 {
-                    echo $dataViolence[0]->value.'%';
+                    echo intval($dataViolence[0]->value);
                 }
             ?>
         </p>
@@ -148,6 +262,8 @@
             ?>
         </p>
     </div>
+    <!-- Illustration violence -->
+    <img src="" alt="">
     <!-- 5 domains navigation -->
     <div class="domains">
         <a href="#" class="studies-button  js-current-button">STUDIES</a>

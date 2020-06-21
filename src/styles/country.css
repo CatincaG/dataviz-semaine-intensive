@@ -10,6 +10,12 @@ body
     background-color: #DED9EE;
 }
 
+body, html
+{
+    height: 100%;
+    overflow: hidden;
+}
+
 /* Text */
 
 h3
@@ -27,7 +33,7 @@ a
 
 p.value
 {
-    font-size: 72px;
+    font-size: 80px;
     font-weight: 700;
     color: #5941A9;
 }
@@ -55,8 +61,8 @@ div
 
 .studies-content
 {
-    top: 12vw;
-    right: calc(50% - 12vw);
+    top: 4vw;
+    right: 36vw;
 }
 
 .work-content
@@ -77,6 +83,24 @@ div
 .domains a
 {
     margin: 16px;
+}
+
+/* illustrations */
+img.studies-illustration
+{
+    position: absolute;
+    left: -8vw;
+    bottom: 0;
+    width: 40vw;
+    height: 40vw;
+}
+
+/* chart */
+canvas
+{
+    position: absolute;
+    left: 24vw;
+    top: 12vw;
 }
 
 /* js elements */

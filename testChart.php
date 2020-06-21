@@ -27,59 +27,48 @@ $years = array_unique($years);
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
-<canvas id="myChart" width="800" height="450"></canvas>
-
+<!--Container of the chart-->
+<div class="chart-container" style="position: relative; height:40vh; width:80vw">
+  <canvas id="myChart"></canvas>
+</div>
+<!--Script for the chart-->
 <script>
   const ctx = document.getElementById('myChart').getContext('2d')
 
-  /*
-  *--------------
-  *
-  * Chart generation
-  *
-  *--------------
-  */
-  // beginning of Chart generation
   const myChart = new Chart(ctx, {
   type: 'line',
 
     data: {
       // Years
-      labels: 
-      [
-        <?php
+      labels: [<?php
         foreach ($years as $year):
           echo $year.',';
         endforeach;
-        ?>
-      ],
+      ?>],
 
       datasets: [{
-      // Woman
-      label: 'Woman',
-      data: [<?php
-        foreach ($datastudies as $dataItem): if($dataItem->sex === 'W') {
-          echo str_replace(',','.',$dataItem->value).',';
-        }
-        endforeach;
-        ?>],
-      backgroundColor: "rgba(153,255,51,0.4)"
-      }, {
-
-      // Men
-      label: 'Men',
-      data: 
-      [
-        <?php
-        foreach ($datastudies as $dataItem):
-          if($dataItem->sex === 'M')
-          {
+        // Woman
+        label: 'Woman',
+        data: [<?php
+          foreach ($datastudies as $dataItem): if($dataItem->sex === 'W') {
             echo str_replace(',','.',$dataItem->value).',';
           }
-        endforeach;
-        ?>
-      ],
-      backgroundColor: "rgba(255,153,0,0.4)"
+          endforeach;
+        ?>],
+        backgroundColor: "rgba(153,255,51,0.4)"
+        }, {
+
+        // Men
+        label: 'Men',
+        data: [<?php
+          foreach ($datastudies as $dataItem):
+            if($dataItem->sex === 'M')
+            {
+              echo str_replace(',','.',$dataItem->value).',';
+            }
+          endforeach;
+        ?>],
+        backgroundColor: "rgba(255,153,0,0.4)"
       }]
     },
 
@@ -87,11 +76,12 @@ $years = array_unique($years);
       legend: { display: true },
       title: {
         display: true,
-        text: 'Predicted world population (millions) in 2050'
+        text: 'Percentage of women and men graduated'
       }
     }
   })
 </script>
+<!--End of the script for the chart-->
 
 </body>
 </html>
