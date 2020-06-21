@@ -21,7 +21,7 @@ curl_close($curl);
 
 <head>
     <meta charset="utf-8">
-    <title>Mind the gap</title>
+    <title>Gender equality in Europe</title>
     <link rel="stylesheet" href="./src/styles/map.css">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -40,6 +40,13 @@ curl_close($curl);
     </div>
     <!-- Map -->
     <div id="map-container"></div>
+    <!-- Help -->
+    <div class="help">
+        <img src="./src/images/help.svg" alt="help">
+        <p>Help</p>
+    </div>
+    <!-- Source -->
+    <p class="source">2017 data from EUOpen Data</p>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
