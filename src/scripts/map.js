@@ -1,6 +1,36 @@
 // Datas
 const datajson = JSON.parse(data)
-const dataset_global = {}
+const dataset = {}
+
+// MAP
+const createMap = (_dataset) => {
+    const map = new Datamap({
+        element: document.getElementById('map-container'),
+        // color if no data
+        fills: {
+            defaultFill: '#FFFFFF'
+        },
+        // datas
+        data: _dataset,
+        // hover infos
+        geographyConfig: {
+            highlightBorderColor: '#FFE659',
+            popupTemplate: function (geography, data) {
+                return '<div class="hoverinfo">' + geography.properties.name + '<br>' + data.score + ' '
+            }
+        },
+        // Europe mercator view and zoom
+        setProjection: function (element) {
+            const projection = d3.geo.mercator()
+                .center([15, 53])
+                .scale(950)
+                .translate([element.offsetWidth / 2, element.offsetHeight / 2])
+            const path = d3.geo.path()
+                .projection(projection)
+            return { path: path, projection: projection }
+        },
+    })
+}
 
 // Colors
 const paletteScale = d3.scale.linear()
@@ -8,45 +38,38 @@ const paletteScale = d3.scale.linear()
     .range(["white", "#FF9D43", "black"])
 
 
-// Set database for the map
+// Set database for the global map
 datajson.forEach((_country) => {
     const country = _country.country
     _country.global_score = parseFloat(_country.global_score)
     const score = _country.global_score
     const color = paletteScale(score)
-    dataset_global[country] = { score: score, fillColor: color }
+    dataset[country] = { score: score, fillColor: color }
+})
+createMap(dataset)
+
+// EDUCATION
+const educationButton = document.querySelector('.education-button')
+educationButton.addEventListener('click', () => {
+    delete map
+    delete dataset
+    const dataset = {}
+    // Set database for the education map
+    datajson.forEach((_country) => {
+        const country = _country.country
+        _country.studies_score = parseFloat(_country.studies_score)
+        const score = _country.studies_score
+        const color = paletteScale(score)
+        dataset[country] = { score: score, fillColor: color }
+    })
+    createMap(dataset)
 })
 
 
-console.log(dataset_global)
 
-// MAP
-const map = new Datamap({
-    element: document.getElementById('map-container'),
-    // color if no data
-    fills: {
-        defaultFill: '#FFFFFF'
-    },
-    // datas
-    data: dataset_global,
-    // hover infos
-    geographyConfig: {
-        highlightBorderColor: '#FFE659',
-        popupTemplate: function (geography, data) {
-            return '<div class="hoverinfo">' + geography.properties.name + '<br>' + data.score + ' '
-        }
-    },
-    // Europe mercator view and zoom
-    setProjection: function (element) {
-        const projection = d3.geo.mercator()
-            .center([15, 53])
-            .scale(950)
-            .translate([element.offsetWidth / 2, element.offsetHeight / 2])
-        const path = d3.geo.path()
-            .projection(projection)
-        return { path: path, projection: projection }
-    },
-})
+// console.log(dataset_global)
+
+
 
 
 // Send to the country page on click

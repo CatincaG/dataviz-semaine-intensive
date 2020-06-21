@@ -44,45 +44,53 @@ h1{
     flex-direction: column;
 }
 
-.categories button{
+.categories li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 135px;
     height: 35px;
     margin: 25px;
-    font-family: inherit;
     font-size: 1.2rem;
     text-transform: uppercase;
-    background: none;
+    border: 2px solid;
     border-radius: 100px;
+}
+
+.categories a{
+    text-decoration: none;
+    z-index: 10;
 }
 
 /* Buttons colors */
 
-.categories button.global-button{
+.categories .global-button{
     color: #FF9D43;
     border-color: #FF9D43;
 }
 
-.categories button.education-button{
+.categories .education-button{
     color: #5941A9;
     border-color: #5941A9;
 }
 
-.categories button.work-button{
+.categories .work-button{
     color: #A9417F;
     border-color: #A9417F;
 }
 
-.categories button.health-button{
+.categories .health-button{
     color: #41A95E;
     border-color: #41A95E;
 }
 
-.categories button.power-button{
+.categories .power-button{
     color: #3E9FAC;
     border-color: #3E9FAC;
 }
 
-.categories button.violence-button{
+.categories .violence-button{
     color: #B43838;
     border-color: #B43838;
 }

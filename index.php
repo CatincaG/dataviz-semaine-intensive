@@ -30,14 +30,14 @@ curl_close($curl);
     <!-- Title -->
     <h1>Gender equality in Europe</h1>
     <!-- Category choice -->
-    <div class="categories">
-        <button class="global-button">Global</button>
-        <button class="education-button">Education</button>
-        <button class="work-button">Work</button>
-        <button class="health-button">Health</button>
-        <button class="power-button">Power</button>
-        <button class="violence-button">Violence</button>
-    </div>
+    <ul class="categories">
+        <a href="#" class="global-button"><li>Global</li></a>
+        <a href="#" class="education-button"><li>Education</li></a>
+        <a href="#" class="work-button"><li>Work</li></a>
+        <a href="#" class="health-button"><li>Health</li></a>
+        <a href="#" class="power-button"><li>Power</li></a>
+        <a href="#" class="violence-button"><li>Violence</li></a>
+    </ul>
     <!-- Map -->
     <div id="map-container"></div>
     <!-- Help -->
