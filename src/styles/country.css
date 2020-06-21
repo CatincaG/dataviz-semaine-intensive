@@ -11,6 +11,13 @@ body
 }
 
 /* Text */
+
+h3
+{
+    margin: 24px;
+    text-align: right;
+}
+
 a
 {
     font-size: 14px;
@@ -32,10 +39,11 @@ p.description
     color: #5941A9;
 }
 
-h3
+p.missing-data
 {
-    margin: 24px;
-    text-align: right;
+    font-size: 24px;
+    font-weight: 400;
+    color: #4F4F4F;
 }
 
 /* Elements */

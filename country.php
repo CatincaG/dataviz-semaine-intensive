@@ -92,29 +92,32 @@
 </head>
 <body>
 <!-- <?php
-    $currentPowerData = array_filter($dataPower, function($d){
-        return $d;
+    $currentPowerData = usort($dataPower, 
+    function($a, $b)
+    {
+        if($a->sex === 'W' && $b->position === 'CEO (Chief Executive Officer)')
+        {
+            return strcmp($a->sex, $b->position);
+        }
     });
 
     // echo '<pre>';
-    // var_dump($dataPower);
+    // var_dump($currentPowerData);
     // echo '</pre>';
     // exit;
-?>  -->
+?> -->
     <!-- Name of the country -->
     <h3><?= end($dataStudies)->country ?></h3>
     <!-- Studies category -->
     <div class="studies-content">
         <p class="value"><?= end($dataStudies)->value.'%' ?></p>
         <p class="description">of students are women</p>
-        <p>Studies category</p>
     </div>
     <!-- Work category -->
     <div class="work-content js-hidden">
         <p class="description">Women earn</p>
         <p class="value"><?= end($dataWork)->value.'%' ?></p>
         <p class="description">less than men</p>
-        <p>Work category</p>
     </div>
     <!-- Power category -->
     <div class="power-content js-hidden">
@@ -123,7 +126,6 @@
 
         </p>
         <p class="description">are woman</p>
-        <p>Power category</p>
     </div>
     <!-- Health category -->
     <div class="health-content js-hidden">
@@ -132,7 +134,6 @@
         
         </p>
         <p class="description">years more than a men</p>
-        <p>Health category</p>
     </div>
     <!-- Violence category -->
     <div class="violence-content js-hidden">
@@ -143,14 +144,17 @@
                 {
                     echo $dataViolence[0]->value.'%';
                 }
-                else
-                {
-                    echo('There is no data for this country');
-                }
             ?>
         </p>
         <p class="description"> woman were raped</p>
-        <p>Violence category</p>
+        <p class ="missing-data">
+            <?php
+                if(empty($dataViolence))
+                {
+                    echo('There is no data available for this country');
+                }
+            ?>
+        </p>
     </div>
     <!-- 5 domains navigation -->
     <div class="domains">
