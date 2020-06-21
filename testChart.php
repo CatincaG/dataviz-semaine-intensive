@@ -32,6 +32,13 @@ $years = array_unique($years);
 <script>
   const ctx = document.getElementById('myChart').getContext('2d')
 
+  /*
+  *--------------
+  *
+  * Chart generation
+  *
+  *--------------
+  */
   // beginning of Chart generation
   const myChart = new Chart(ctx, {
   type: 'line',
@@ -50,17 +57,12 @@ $years = array_unique($years);
       datasets: [{
       // Woman
       label: 'Woman',
-      data: 
-      [
-        <?php 
-        foreach ($datastudies as $dataItem):
-          if($dataItem->sex === 'W')
-          {
+      data: [<?php
+        foreach ($datastudies as $dataItem): if($dataItem->sex === 'W') {
           echo str_replace(',','.',$dataItem->value).',';
-          }
+        }
         endforeach;
-        ?>
-      ],
+        ?>],
       backgroundColor: "rgba(153,255,51,0.4)"
       }, {
 

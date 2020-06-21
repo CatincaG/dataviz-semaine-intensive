@@ -79,6 +79,17 @@
     // echo '<pre>';
     // var_dump($dataViolence);
     // echo '</pre>';
+
+    // Filtering dataPower array
+    $currentDataPower = array_filter($dataPower, function($d) {
+        return $d->sex === 'W' && $d->position === 'CEO (Chief Executive Officer)';
+    });
+
+    // Filtering dataHealth array
+    $currentDataHealth = array_filter($dataHealth, function($d) {
+        return $d->sex === 'W' && $d->info === 'Healthy life years in absolute value at birth';
+    });
+
 ?>
 
 <!DOCTYPE html>
@@ -91,21 +102,6 @@
     <link rel="stylesheet" href="./src/styles/country.css">
 </head>
 <body>
-<!-- <?php
-    $currentPowerData = usort($dataPower, 
-    function($a, $b)
-    {
-        if($a->sex === 'W' && $b->position === 'CEO (Chief Executive Officer)')
-        {
-            return strcmp($a->sex, $b->position);
-        }
-    });
-
-    // echo '<pre>';
-    // var_dump($currentPowerData);
-    // echo '</pre>';
-    // exit;
-?> -->
     <!-- Name of the country -->
     <h3><?= end($dataStudies)->country ?></h3>
     <!-- Studies category -->
@@ -122,17 +118,13 @@
     <!-- Power category -->
     <div class="power-content js-hidden">
         <p class="description">For 100 CEO, only</p>
-        <p class="value">
-
-        </p>
+        <p class="value"><?=end($currentDataPower)->value.'%'?></p>
         <p class="description">are woman</p>
     </div>
     <!-- Health category -->
     <div class="health-content js-hidden">
         <p class="description">Women live</p>
-        <p class="value">
-        
-        </p>
+        <p class="value"><?= end($currentDataHealth)->value ?></p>
         <p class="description">years more than a men</p>
     </div>
     <!-- Violence category -->
