@@ -21,7 +21,7 @@ curl_close($curl);
 
 <head>
     <meta charset="utf-8">
-    <title>Mind the gap</title>
+    <title>Gender equality in Europe</title>
     <link rel="stylesheet" href="./src/styles/map.css">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -30,16 +30,23 @@ curl_close($curl);
     <!-- Title -->
     <h1>Gender equality in Europe</h1>
     <!-- Category choice -->
-    <div class="categories">
-        <button class="global-button">Global</button>
-        <button class="education-button">Education</button>
-        <button class="work-button">Work</button>
-        <button class="health-button">Health</button>
-        <button class="power-button">Power</button>
-        <button class="violence-button">Violence</button>
-    </div>
+    <ul class="categories">
+        <a href="#" class="global-button"><li>Global</li></a>
+        <a href="#" class="education-button"><li>Education</li></a>
+        <a href="#" class="work-button"><li>Work</li></a>
+        <a href="#" class="health-button"><li>Health</li></a>
+        <a href="#" class="power-button"><li>Power</li></a>
+        <a href="#" class="violence-button"><li>Violence</li></a>
+    </ul>
     <!-- Map -->
     <div id="map-container"></div>
+    <!-- Help -->
+    <div class="help">
+        <img src="./src/images/help.svg" alt="help">
+        <p>Help</p>
+    </div>
+    <!-- Source -->
+    <p class="source">2017 data from EUOpen Data</p>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
