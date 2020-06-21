@@ -95,6 +95,15 @@ img.studies-illustration
     height: 40vw;
 }
 
+img.work-illustration
+{
+    position: absolute;
+    right: 12vw;
+    bottom: 0;
+    width: 40vw;
+    height: 40vw;
+}
+
 /* chart */
 canvas
 {

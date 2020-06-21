@@ -199,11 +199,11 @@
     <!-- Display data-->
     <div class="work-content js-hidden">
         <p class="description">Women earn</p>
-        <p class="value"><?= end($dataWork)->value.'%' ?></p>
+        <p class="value"><?= intval(end($dataWork)->value).'%' ?></p>
         <p class="description">less than men</p>
     </div>
     <!-- Illustration work -->
-    <img src="" alt="">
+    <img src="./assets/svg/illustrations/work-illustration.svg" class="work-illustration js-hidden" alt="girl working illustration">
     <!--
     *--------------
     *
@@ -214,8 +214,8 @@
     <!-- Display data-->
     <div class="power-content js-hidden">
         <p class="description">For 100 CEO, only</p>
-        <p class="value"><?=end($currentDataPower)->value.'%'?></p>
-        <p class="description">are woman</p>
+        <p class="value"><?= intval(end($currentDataPower)->value) ?></p>
+        <p class="description">are woman in <?= end($currentDataPower)->year ?></p>
     </div>
     <!-- Illustration power -->
     <img src="" alt="">
@@ -248,7 +248,7 @@
             <?php
                 if(!empty($dataViolence))
                 {
-                    echo intval($dataViolence[0]->value);
+                    echo intval($dataViolence[0]->value).' '.'000';
                 }
             ?>
         </p>

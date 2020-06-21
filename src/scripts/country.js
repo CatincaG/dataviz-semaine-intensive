@@ -13,6 +13,7 @@ class Country
 
         this.studiesIllustration = document.querySelector('img.studies-illustration')
         console.log(this.studiesIllustration)
+        this.workIllustration = document.querySelector('img.work-illustration')
 
         this.chartStudies = document.querySelector('div.chart-studies')
 
@@ -42,7 +43,10 @@ class Country
                     this.violenceDomain.classList.add('js-hidden')
                     this.powerDomain.classList.add('js-hidden')
                     this.healthDomain.classList.add('js-hidden')
+
                     this.studiesIllustration.classList.remove('js-hidden')
+                    this.workIllustration.classList.add('js-hidden')
+
                     this.chartStudies.classList.remove('js-hidden')
                 } 
                 else if(_button.classList.contains('work-button') && this.workDomain.classList.contains('js-hidden'))
@@ -52,7 +56,10 @@ class Country
                     this.violenceDomain.classList.add('js-hidden')
                     this.powerDomain.classList.add('js-hidden')
                     this.healthDomain.classList.add('js-hidden')
+
                     this.studiesIllustration.classList.add('js-hidden')
+                    this.workIllustration.classList.remove('js-hidden')
+
                     this.chartStudies.classList.add('js-hidden')
                 } 
                 else if(_button.classList.contains('power-button') && this.powerDomain.classList.contains('js-hidden'))
@@ -62,7 +69,10 @@ class Country
                     this.violenceDomain.classList.add('js-hidden')
                     this.workDomain.classList.add('js-hidden')
                     this.healthDomain.classList.add('js-hidden')
+
                     this.studiesIllustration.classList.add('js-hidden')
+                    this.workIllustration.classList.add('js-hidden')
+
                     this.chartStudies.classList.add('js-hidden')
                 }
                 else if(_button.classList.contains('health-button') && this.healthDomain.classList.contains('js-hidden'))
@@ -72,7 +82,10 @@ class Country
                     this.violenceDomain.classList.add('js-hidden')
                     this.workDomain.classList.add('js-hidden')
                     this.powerDomain.classList.add('js-hidden')
+
                     this.studiesIllustration.classList.add('js-hidden')
+                    this.workIllustration.classList.add('js-hidden')
+
                     this.chartStudies.classList.add('js-hidden')
                 }
                 else if(_button.classList.contains('violence-button') && this.violenceDomain.classList.contains('js-hidden'))
@@ -82,7 +95,10 @@ class Country
                     this.healthDomain.classList.add('js-hidden')
                     this.workDomain.classList.add('js-hidden')
                     this.powerDomain.classList.add('js-hidden')
+
                     this.studiesIllustration.classList.add('js-hidden')
+                    this.workIllustration.classList.add('js-hidden')
+                    
                     this.chartStudies.classList.add('js-hidden')
                 }
             })
