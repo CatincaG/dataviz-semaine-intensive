@@ -56,12 +56,11 @@ h1{
     text-transform: uppercase;
     border: 2px solid;
     border-radius: 100px;
+    z-index: 10;
+    cursor: pointer;
 }
 
-.categories a{
-    text-decoration: none;
-    z-index: 10;
-}
+
 
 /* Buttons colors */
 
