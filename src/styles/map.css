@@ -2,21 +2,72 @@ body{
     background-color: #DCEAED;
     font-family: 'Rubik', sans-serif;
     color: #333333;
+    overflow: hidden;
 }
 
 h1{
     font-weight: 500;
     text-align: center;
     font-size: 2rem;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 2%;
 }
 
 #map-container{
     position: relative;
-    width: 1000px; 
-    height: 800px;
+    width: 80vw; 
+    height: 80vh;
     margin: 0 auto;
+}
+
+.legend{
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    width: 30%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #4F4F4F;
+    border-radius: 5px;
+}
+
+.legend p{
+    margin: 2%;
+    color: #4F4F4F;
+}
+
+.colors{
+    display: flex;
+    flex-direction: row;
+}
+
+.legend .colors .colorbox{
+    width: 3vw;
+    height: 3vh;
+    background-color: #FFD8B4;
+}
+
+.legend .colors .color2{
+    background-color: #FFC48E;
+}
+
+.legend .colors .color3{
+    background-color: #FFB169;
+}
+
+.legend .colors .color4{
+    background-color: #FF9D43;
+}
+
+.legend .colors .color5{
+    background-color: #C47833;
+}
+
+.legend .colors .color6{
+    background-color: #9D6129;
 }
 
 .source{
@@ -26,7 +77,7 @@ h1{
 
 .help{
     position: absolute;
-    bottom: 10%;
+    bottom: 5%;
     left: 10%;
     display: flex;
     flex-direction: row;
@@ -38,8 +89,8 @@ h1{
 
 .categories{
     position: absolute;
-    top: 20%;
-    left: 10%;
+    top: 12%;
+    left: 5%;
     display: flex;
     flex-direction: column;
 }
@@ -51,7 +102,7 @@ h1{
     justify-content: center;
     width: 135px;
     height: 35px;
-    margin: 25px;
+    margin: 10%;
     font-size: 1.2rem;
     text-transform: uppercase;
     border: 2px solid;
@@ -94,3 +145,9 @@ h1{
     border-color: #B43838;
 }
 
+@media screen and (min-width: 1400px) {
+    .categories{
+        top: 20%;
+        left: 12%;
+    }
+  }

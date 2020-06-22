@@ -40,6 +40,19 @@ curl_close($curl);
     </ul>
     <!-- Map -->
     <div id="map-container"></div>
+    <!-- Legend -->
+    <div class="legend">
+        <p>Bad</p>
+        <div class="colors">
+            <div class="colorbox color1"></div>
+            <div class="colorbox color2"></div>
+            <div class="colorbox color3"></div>
+            <div class="colorbox color4"></div>
+            <div class="colorbox color5"></div>
+            <div class="colorbox color6"></div>
+        </div>
+        <p>Excellent</p>
+    </div>
     <!-- Help -->
     <div class="help">
         <img src="./assets/svg/icons/help.svg" alt="help">
