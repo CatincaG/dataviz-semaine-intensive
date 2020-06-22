@@ -11,7 +11,7 @@ class Country
         this.healthDomain = document.querySelector('.health-content')
         this.violenceDomain = document.querySelector('.violence-content')
 
-        this.studiesIllustration = document.querySelector('img.studies-illustration')
+        this.studiesIllustration = document.querySelector('div.container-studies-illustration')
         console.log(this.studiesIllustration)
         this.workIllustration = document.querySelector('img.work-illustration')
         this.violenceIllustration = document.querySelector('img.violence-illustration')
@@ -21,6 +21,8 @@ class Country
         this.chartPower = document.querySelector('div.js-chart-power')
         this.chartHealth = document.querySelector('div.js-chart-health')
         this.chartViolence = document.querySelector('div.js-chart-violence')
+
+        this.sourceStudies = document.querySelector('p.source-studies')
 
         // Set functions
         this.setCurrentDomain()
@@ -58,6 +60,8 @@ class Country
                     this.chartPower.classList.add('js-hidden')
                     this.chartHealth.classList.add('js-hidden')
                     this.chartViolence.classList.add('js-hidden')
+
+                    this.sourceStudies.classList.remove('js-hidden')
                 } 
                 else if(_button.classList.contains('work-button') && this.workDomain.classList.contains('js-hidden'))
                 {
@@ -76,6 +80,8 @@ class Country
                     this.chartPower.classList.add('js-hidden')
                     this.chartHealth.classList.add('js-hidden')
                     this.chartViolence.classList.add('js-hidden')
+
+                    this.sourceStudies.classList.add('js-hidden')
                 } 
                 else if(_button.classList.contains('power-button') && this.powerDomain.classList.contains('js-hidden'))
                 {
@@ -94,6 +100,8 @@ class Country
                     this.chartPower.classList.remove('js-hidden')
                     this.chartHealth.classList.add('js-hidden')
                     this.chartViolence.classList.add('js-hidden')
+
+                    this.sourceStudies.classList.add('js-hidden')
                 }
                 else if(_button.classList.contains('health-button') && this.healthDomain.classList.contains('js-hidden'))
                 {
@@ -112,6 +120,8 @@ class Country
                     this.chartPower.classList.add('js-hidden')
                     this.chartHealth.classList.remove('js-hidden')
                     this.chartViolence.classList.add('js-hidden')
+
+                    this.sourceStudies.classList.add('js-hidden')
                 }
                 else if(_button.classList.contains('violence-button') && this.violenceDomain.classList.contains('js-hidden'))
                 {
@@ -130,6 +140,8 @@ class Country
                     this.chartPower.classList.add('js-hidden')
                     this.chartHealth.classList.add('js-hidden')
                     this.chartViolence.classList.remove('js-hidden')
+
+                    this.sourceStudies.classList.add('js-hidden')
                 }
             })
         })

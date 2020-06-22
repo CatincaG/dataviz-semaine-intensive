@@ -193,7 +193,10 @@
         <p class="description">of students are women in <?= end($currentDataStudies)->year ?></p>
     </div>
     <!-- Illustration studies -->
-    <img src="./assets/svg/illustrations/studies-woman.svg" class="studies-illustration" alt="graduated girl illustration">
+    <div class="container-studies-illustration">
+        <img src="./assets/svg/illustrations/studies-woman.svg" class="studies-illustration" alt="graduated girl illustration">
+        <div class="stage-rectangle"></div>
+    </div>
     <!--Container of the chart-->
     <div class="chart-container js-chart-studies" style="position: relative; height:20vh; width:62vw">
         <canvas id="myChart" class="canvas-studies"></canvas>
@@ -245,12 +248,16 @@
             legend: { display: true },
             title: {
                 display: true,
-                text: 'Percentage of women and men students in <?= end($dataStudies)->country?> from <?= $firstYear ?> to <?= $lastYear ?>'
+                text: 'Percentage of women and men students in <?= end($dataStudies)->country?> from <?= $firstYear ?> to <?= $lastYear ?>',
+                fontSize: 14,
+                fontStyle: '500',
+                padding: 16
             }
         }
     })
     </script>
     <!--End of the script for the chart-->
+    <p class="source-studies">https://eige.europa.eu/gender-statistics/dgs/indicator/eustrat_epsr_eoalm_esll__edat_lfse_03/datatable</p>
     <!--
     *--------------
     *
@@ -303,7 +310,10 @@
             legend: { display: true },
             title: {
                 display: true,
-                text: 'Wage difference between woman and men in <?= end($dataWork)->country?> from <?= $workFirstYear ?> to <?= $workLastYear ?>'
+                text: 'Wage difference between woman and men in <?= end($dataWork)->country?> from <?= $workFirstYear ?> to <?= $workLastYear ?>',
+                fontSize: 14,
+                fontStyle: '500',
+                padding: 16
             }
         }
     })
@@ -376,7 +386,10 @@
             legend: { display: true },
             title: {
                 display: true,
-                text: 'Percentage of women and men who have the position of CEO in <?= end($currentDataPower)->country?> from <?= $powerFirstYear ?> to <?= $powerLastYear ?>'
+                text: 'Percentage of women and men who have the position of CEO in <?= end($currentDataPower)->country?> from <?= $powerFirstYear ?> to <?= $powerLastYear ?>',
+                fontSize: 14,
+                fontStyle: '500',
+                padding: 16
             }
         }
     })
@@ -449,7 +462,10 @@
             legend: { display: true },
             title: {
                 display: true,
-                text: 'Life expectancy in absolute value at birth for women and men in <?= end($currentDataHealth)->country?> from <?= $healthFirstYear ?>  to <?= $healthLastYear ?>'
+                text: 'Life expectancy in absolute value at birth for women and men in <?= end($currentDataHealth)->country?> from <?= $healthFirstYear ?>  to <?= $healthLastYear ?>',
+                fontSize: 14,
+                fontStyle: '500',
+                padding: 16
             }
         }
     })
@@ -533,10 +549,21 @@
         },
 
         options: {
-            legend: { display: true },
+            legend: { display: true, position: 'bottom', align: 'start' },
             title: {
                 display: true,
-                text: 'Number of woman victim of rape per hundred thousand inhabitants, in 2017'
+                text: 'Number of woman victim of rape per hundred thousand inhabitants, in 2017',
+                fontSize: 14,
+                fontStyle: '500',
+                padding: 16
+            },
+            layout: {
+                padding: {
+                    left: 40,
+                    right: 40,
+                    top: 0,
+                    bottom: 0
+                }
             }
         }
     })

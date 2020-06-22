@@ -45,6 +45,16 @@ p.description
     color: #5941A9;
 }
 
+p.source-studies
+{
+    position: absolute;
+    left: 36vw;
+    bottom: 3vw;
+    margin: 0;
+    font-weight: 500;
+    font-size: 12px;
+}
+
 p.missing-data
 {
     font-size: 24px;
@@ -58,7 +68,21 @@ p.missing-data
 {
     position: absolute;
     top: 4vw;
-    right: 36vw;
+    right: 35vw;
+}
+
+.container-studies-illustration
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.stage-rectangle
+{
+    width: 16vw;
+    height: 8vw;
+    background-color: #DDB947;
 }
 
 .work-content
@@ -78,15 +102,15 @@ p.missing-data
 .health-content
 {
     position: absolute;
-    bottom: 2vw;
-    right: 4vw;
+    top: 4vw;
+    left: 4vw;
 }
 
 .violence-content
 {
     position: absolute;
     top: 4vw;
-    left: 8vw;
+    left: 15vw;
 }
 
 .domains
@@ -107,8 +131,8 @@ p.missing-data
 img.studies-illustration
 {
     position: absolute;
-    left: -8vw;
-    bottom: 0;
+    left: -6vw;
+    bottom: 8vw;
     width: 40vw;
     height: 40vw;
 }
@@ -139,8 +163,8 @@ canvas
 
 .canvas-studies
 {
-    left: 24vw;
-    top: 12vw;
+    left: 26vw;
+    top: 9vw;
 }
 
 .canvas-work
@@ -157,8 +181,8 @@ canvas
 
 .canvas-health
 {
-    right: -27vw;
-    bottom: 12vw;
+    right: -26vw;
+    bottom: 0vw;
 }
 
 .canvas-violence
