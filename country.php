@@ -103,6 +103,11 @@
         return $d->sex === 'W' && $d->info === 'Life expectancy in absolute value at birth';
     });
 
+    // echo '<pre>';
+    // var_dump($currentDataHealth);
+    // echo '</pre>';
+    // exit;
+
     /*
     *--------------
     *
@@ -117,7 +122,7 @@
     }, $dataStudies);
     $years = array_unique($years);
 
-    $firstYear = $years[0];
+    $firstYear = array_values($years)[0];
     $lastYear = end($years);
 
     // Years for work category
@@ -126,7 +131,7 @@
     }, $dataWork);
     $workYears = array_unique($workYears);
 
-    $workFirstYear = $workYears[0];
+    $workFirstYear = array_values($workYears)[0];
     $workLastYear = end($workYears);
 
     // Years for power category
@@ -135,7 +140,7 @@
     }, $currentDataPower);
     $powerYears = array_unique($powerYears);
 
-    $powerFirstYear = $powerYears[0];
+    $powerFirstYear = array_values($powerYears)[0];
     $powerLastYear = end($powerYears);
 
     // Years for health category
@@ -144,17 +149,22 @@
     }, $currentDataHealth);
     $healthYears = array_unique($healthYears);
 
-    //$healthFirstYear = $healthYears[0];
+    $healthFirstYear = array_values($healthYears)[0];
     $healthLastYear = end($healthYears);
 
-    // Years for violence category
-    $violenceYears = array_map(function($d) {
-        return $d->year;
-    }, $dataViolence);
-    $violenceYears = array_unique($violenceYears);
+    // echo '<pre>';
+    // var_dump(array_values($healthYears)[0]);
+    // echo '</pre>';
+    // exit;
 
-    //$violenceFirstYear = $violenceYears[0];
-    $violenceLastYear = end($violenceYears);
+    // Years for violence category
+    // $violenceYears = array_map(function($d) {
+    //     return $d->year;
+    // }, $dataViolence);
+    // $violenceYears = array_unique($violenceYears);
+
+    // $violenceFirstYear = array_values($violenceYears)[0];
+    // $violenceLastYear = end($violenceYears);
 ?>
 
 <!DOCTYPE html>
@@ -439,7 +449,7 @@
             legend: { display: true },
             title: {
                 display: true,
-                text: 'Life expectancy in absolute value at birth for women and men in <?= end($currentDataHealth)->country?> from  to <?= $healthLastYear ?>'
+                text: 'Life expectancy in absolute value at birth for women and men in <?= end($currentDataHealth)->country?> from <?= $healthFirstYear ?>  to <?= $healthLastYear ?>'
             }
         }
     })
@@ -454,7 +464,9 @@
     * -->
     <!-- Display data-->
     <div class="violence-content js-hidden">
-        <!-- <p class="description">In <?= $dataViolence[0]->year ?></p> -->
+        <p class="description">
+            In <?php if(!empty($dataViolence)){ echo $dataViolence[0]->year; } ?>
+        </p>
         <p class="value">
             <?php
                 if(!empty($dataViolence))
