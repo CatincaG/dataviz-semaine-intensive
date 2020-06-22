@@ -84,7 +84,7 @@ workButton.addEventListener('click', () => {
     const paletteScale = d3.scale.linear()
         .domain([30, 60, 100])
         .range(["white", "#A9417F", "black"])
-    // Set database for the education map
+    // Set database for the work map
     const dataset = {}
     datajson.forEach((_country) => {
         const country = _country.country
@@ -103,9 +103,9 @@ healthButton.addEventListener('click', () => {
     const mapContainer = document.querySelector('#map-container')
     const mapSvg = mapContainer.querySelector('svg')
     mapContainer.removeChild(mapSvg)
-    // Set colors for education map
+    // Set colors for health map
     const paletteScale = d3.scale.linear()
-        .domain([30, 60, 110])
+        .domain([40, 70, 110])
         .range(["white", "#41A95E", "black"])
     // Set database for the education map
     const dataset = {}
@@ -126,9 +126,9 @@ powerButton.addEventListener('click', () => {
     const mapContainer = document.querySelector('#map-container')
     const mapSvg = mapContainer.querySelector('svg')
     mapContainer.removeChild(mapSvg)
-    // Set colors for education map
+    // Set colors for power map
     const paletteScale = d3.scale.linear()
-        .domain([30, 60, 110])
+        .domain([20, 60, 110])
         .range(["white", "#3E9FAC", "black"])
     // Set database for the education map
     const dataset = {}
@@ -149,7 +149,7 @@ violenceButton.addEventListener('click', () => {
     const mapContainer = document.querySelector('#map-container')
     const mapSvg = mapContainer.querySelector('svg')
     mapContainer.removeChild(mapSvg)
-    // Set colors for education map
+    // Set colors for violence map
     const paletteScale = d3.scale.linear()
         .domain([0, 50, 200])
         .range(["white", "#B43838", "black"])
@@ -157,13 +157,12 @@ violenceButton.addEventListener('click', () => {
     const dataset = {}
     datajson.forEach((_country) => {
         const country = _country.country
-        if (_country.violence_score == null) {
-            _country.violence_score = 0
+        if (_country.violence_score != null) {
+            _country.violence_score = parseFloat(_country.violence_score)
+            const score = _country.violence_score
+            const color = paletteScale(score)
+            dataset[country] = { score: score, fillColor: color }
         }
-        _country.violence_score = parseFloat(_country.violence_score)
-        const score = _country.violence_score
-        const color = paletteScale(score)
-        dataset[country] = { score: score, fillColor: color }
     })
     createMap(dataset)
 })
@@ -179,7 +178,7 @@ globalButton.addEventListener('click', () => {
     const paletteScale = d3.scale.linear()
         .domain([30, 60, 120])
         .range(["white", "#FF9D43", "black"])
-    // Set database for the education map
+    // Set database for the global map
     const dataset = {}
     datajson.forEach((_country) => {
         const country = _country.country
