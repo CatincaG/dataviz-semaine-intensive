@@ -22,8 +22,8 @@ const createMap = (_dataset) => {
         // Europe mercator view and zoom
         setProjection: function (element) {
             const projection = d3.geo.mercator()
-                .center([15, 53])
-                .scale(950)
+                .center([15, 52])
+                .scale(700)
                 .translate([element.offsetWidth / 2, element.offsetHeight / 2])
             const path = d3.geo.path()
                 .projection(projection)

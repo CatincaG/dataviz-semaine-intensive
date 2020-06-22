@@ -42,7 +42,7 @@ curl_close($curl);
     <div id="map-container"></div>
     <!-- Legend -->
     <div class="legend">
-        <p>Very bad</p>
+        <p>Bad</p>
         <div class="colors">
             <div class="colorbox color1"></div>
             <div class="colorbox color2"></div>
