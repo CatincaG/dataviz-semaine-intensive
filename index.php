@@ -53,11 +53,6 @@ curl_close($curl);
         </div>
         <p>Excellent</p>
     </div>
-    <!-- Help -->
-    <div class="help">
-        <img src="./assets/svg/icons/help.svg" alt="help">
-        <p>Help</p>
-    </div>
     <!-- Source -->
     <p class="source">2017 datas from EUOpen Data</p>
 
