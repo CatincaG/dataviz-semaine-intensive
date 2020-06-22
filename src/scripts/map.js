@@ -14,9 +14,9 @@ const createMap = (_dataset) => {
         data: _dataset,
         // hover infos
         geographyConfig: {
-            highlightBorderColor: '#FFE659',
+            highlightBorderColor: '#FFEE90',
             popupTemplate: function (geography, data) {
-                return '<div class="hoverinfo">' + geography.properties.name + '<br>' + data.score + ' '
+                return '<div class="hoverinfo">' + geography.properties.name + '<br><strong>' + data.score + '</strong><br>' + "Click to learn more" + '</div>'
             }
         },
         // Europe mercator view and zoom
@@ -29,6 +29,19 @@ const createMap = (_dataset) => {
                 .projection(projection)
             return { path: path, projection: projection }
         },
+    })
+}
+
+const redirection = () => {
+    // Send to the country page on click
+    // get country path
+    const getPath = document.querySelectorAll('#map-container svg g path')
+    // click on the country
+    getPath.forEach((_path) => {
+        _path.addEventListener('click', () => {
+            const idCountry = _path.classList[1]
+            window.location.href = `country.php?id=${idCountry}`
+        })
     })
 }
 
@@ -48,6 +61,7 @@ datajson.forEach((_country) => {
     dataset[country] = { score: score, fillColor: color }
 })
 createMap(dataset)
+redirection()
 
 
 // EDUCATION
@@ -77,6 +91,7 @@ educationButton.addEventListener('click', () => {
     colorBoxes.forEach((_colorbox, _key) => {
         _colorbox.style.backgroundColor = colors[_key]
     })
+    redirection()
 })
 
 // WORK
@@ -106,6 +121,7 @@ workButton.addEventListener('click', () => {
     colorBoxes.forEach((_colorbox, _key) => {
         _colorbox.style.backgroundColor = colors[_key]
     })
+    redirection()
 })
 
 // HEALTH
@@ -135,6 +151,7 @@ healthButton.addEventListener('click', () => {
     colorBoxes.forEach((_colorbox, _key) => {
         _colorbox.style.backgroundColor = colors[_key]
     })
+    redirection()
 })
 
 // POWER
@@ -164,6 +181,7 @@ powerButton.addEventListener('click', () => {
     colorBoxes.forEach((_colorbox, _key) => {
         _colorbox.style.backgroundColor = colors[_key]
     })
+    redirection()
 })
 
 // VIOLENCE
@@ -195,6 +213,7 @@ violenceButton.addEventListener('click', () => {
     colorBoxes.forEach((_colorbox, _key) => {
         _colorbox.style.backgroundColor = colors[_key]
     })
+    redirection()
 })
 
 // GLOBAL
@@ -224,17 +243,8 @@ globalButton.addEventListener('click', () => {
     colorBoxes.forEach((_colorbox, _key) => {
         _colorbox.style.backgroundColor = colors[_key]
     })
+    redirection()
 })
 
 
-// Send to the country page on click
-// get country path
-const getPath = document.querySelectorAll('#map-container svg g path')
-// click on the country
-getPath.forEach((_path) => {
-    _path.addEventListener('click', () => {
-        const idCountry = _path.classList[1]
-        window.location.href = `country.php?id=${idCountry}`
-    })
-})
 
