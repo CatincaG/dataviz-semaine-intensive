@@ -131,7 +131,7 @@
         <p class="description">of students are women in <?= end($currentDataStudies)->year ?></p>
     </div>
     <!-- Illustration studies -->
-    <img src="./assets/svg/illustrations/studies-illustration.svg" class="studies-illustration" alt="graduated girl illustration">
+    <img src="./assets/svg/illustrations/studies-woman.svg" class="studies-illustration" alt="graduated girl illustration">
     <!--Container of the chart-->
     <div class="chart-container chart-studies" style="position: relative; height:20vh; width:62vw">
         <canvas id="myChart"></canvas>
