@@ -67,7 +67,7 @@
 
     //Instantiate curl for data violence
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/dataviolence?id='.$id);
+    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/dataviolence');
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $dataViolence = curl_exec($curl);
     curl_close($curl);
@@ -464,30 +464,91 @@
     * -->
     <!-- Display data-->
     <div class="violence-content js-hidden">
-        <p class="description">
-            In <?php if(!empty($dataViolence)){ echo $dataViolence[0]->year; } ?>
+        <p class="description"> 
+            In 
+            <?php
+                foreach ($dataViolence as $_dataViolence):
+                    if($id === $_dataViolence->id)
+                    {
+                        echo $_dataViolence->country.',';
+                    }
+                endforeach;
+            ?>
         </p>
         <p class="value">
             <?php
-                if(!empty($dataViolence))
-                {
-                    echo intval($dataViolence[0]->value).' '.'000';
-                }
+                foreach ($dataViolence as $_dataViolence):
+                    if($id === $_dataViolence->id)
+                    {
+                        echo intval($_dataViolence->value).' '.'000';
+                    }
+                endforeach;
             ?>
         </p>
-        <p class="description"> woman were raped</p>
+        <p class="description"> woman were raped in 2017</p>
         <p class ="missing-data">
-            <?php
+            <!-- <?php
                 if(empty($dataViolence))
                 {
                     echo('There is no data available for this country');
                 }
-            ?>
+            ?> -->
         </p>
     </div>
     <!-- Illustration violence -->
-    <img src="" alt="">
-    <!-- 5 domains navigation -->
+    <img src="./assets/svg/illustrations/violence-woman.svg" class="violence-illustration js-hidden" alt="woman sitting illustration">
+    <!--Container of the doughnut-->
+    <div class="chart-container js-chart-violence js-hidden" style="position: relative; height:20vh; width:62vw">
+        <canvas id="chart-data-violence" class="canvas-violence"></canvas>
+    </div>
+    <!--Script for the chart-->
+    <script>
+    const chartDoughnutViolence = document.getElementById('chart-data-violence').getContext('2d')
+
+    Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
+    Chart.defaults.global.defaultFontColor = 'black'
+
+    let chartDataViolence = new Chart(chartDoughnutViolence, {
+    type: 'doughnut',
+
+        data: {
+            // Name of countries
+            labels: [<?php
+                foreach ($dataViolence as $_dataViolence):
+                    echo '"'.$_dataViolence->country.'"'.',';
+                endforeach;
+            ?>],
+
+            datasets: [{
+                // Numbers of victim
+                label: 'Per hundred thousand inhabitants',
+                data: [<?php
+                foreach ($dataViolence as $_dataViolence):
+                    echo str_replace(',','.',$_dataViolence->value).',';
+                endforeach;
+                ?>],
+                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#f6068e", "#2a62b2", "#b27a2a", "#face4e", "#f2bae0", "#5a2ea6", "#508810", "#962612", "#0e2432", "#bd6c1f", "#89a0d8", "#8acada", "#da9a8a", "#900c94", "#10940c", "#f06644"]
+
+            }]
+        },
+
+        options: {
+            legend: { display: true },
+            title: {
+                display: true,
+                text: 'Number of woman victim of rape per hundred thousand inhabitants, in 2017'
+            }
+        }
+    })
+    </script>
+    <!--End of the script for the chart-->
+    <!--
+    *--------------
+    *
+    * 5 categories for the navigation
+    *
+    *--------------
+    * -->
     <div class="domains">
         <a href="#" class="studies-button  js-current-button">STUDIES</a>
         <a href="#" class="work-button">WORK</a>

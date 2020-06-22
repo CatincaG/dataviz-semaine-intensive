@@ -85,8 +85,8 @@ p.missing-data
 .violence-content
 {
     position: absolute;
-    top: 12vw;
-    left: 12vw;
+    top: 4vw;
+    left: 8vw;
 }
 
 .domains
@@ -122,6 +122,15 @@ img.work-illustration
     height: 40vw;
 }
 
+img.violence-illustration
+{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 40vw;
+    height: 40vw;
+}
+
 /* chart */
 canvas
 {
@@ -150,6 +159,12 @@ canvas
 {
     right: -27vw;
     bottom: 12vw;
+}
+
+.canvas-violence
+{
+    right: -2vw;
+    bottom: 10vw;
 }
 
 /* js elements */
