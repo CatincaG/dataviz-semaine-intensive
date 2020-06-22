@@ -19,6 +19,55 @@ h1{
     margin: 0 auto;
 }
 
+.legend{
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #4F4F4F;
+    border-radius: 5px;
+}
+
+.legend p{
+    margin: 20px;
+    color: #4F4F4F;
+}
+
+.colors{
+    display: flex;
+    flex-direction: row;
+}
+
+.legend .colors .colorbox{
+    width: 45px;
+    height: 30px;
+    background-color: #FFD8B4;
+}
+
+.legend .colors .color2{
+    background-color: #FFC48E;
+}
+
+.legend .colors .color3{
+    background-color: #FFB169;
+}
+
+.legend .colors .color4{
+    background-color: #FF9D43;
+}
+
+.legend .colors .color5{
+    background-color: #C47833;
+}
+
+.legend .colors .color6{
+    background-color: #9D6129;
+}
+
 .source{
     text-align: right;
     margin-right: 20px;

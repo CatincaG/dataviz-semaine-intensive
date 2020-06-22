@@ -71,6 +71,12 @@ educationButton.addEventListener('click', () => {
         dataset[country] = { score: score, fillColor: color }
     })
     createMap(dataset)
+    // legend
+    const colors = ["#BDB3DD", "#9B8DCB", "#7A67BA", "#5941A9", "#392A6C", "#2E2256"]
+    const colorBoxes = document.querySelectorAll('.colorbox')
+    colorBoxes.forEach((_colorbox, _key) => {
+        _colorbox.style.backgroundColor = colors[_key]
+    })
 })
 
 // WORK
@@ -94,6 +100,12 @@ workButton.addEventListener('click', () => {
         dataset[country] = { score: score, fillColor: color }
     })
     createMap(dataset)
+    // legend
+    const colors = ["#DDB3CC", "#CB8DB2", "#BA6799", "#A9417F", "#6C2A52", "#562242"]
+    const colorBoxes = document.querySelectorAll('.colorbox')
+    colorBoxes.forEach((_colorbox, _key) => {
+        _colorbox.style.backgroundColor = colors[_key]
+    })
 })
 
 // HEALTH
@@ -117,6 +129,12 @@ healthButton.addEventListener('click', () => {
         dataset[country] = { score: score, fillColor: color }
     })
     createMap(dataset)
+    // legend
+    const colors = ["#B3DDBF", "#8DCB9E", "#67BA7E", "#41A95E", "#2A6C3C", "#225630"]
+    const colorBoxes = document.querySelectorAll('.colorbox')
+    colorBoxes.forEach((_colorbox, _key) => {
+        _colorbox.style.backgroundColor = colors[_key]
+    })
 })
 
 // POWER
@@ -140,6 +158,12 @@ powerButton.addEventListener('click', () => {
         dataset[country] = { score: score, fillColor: color }
     })
     createMap(dataset)
+    // legend
+    const colors = ["#B2D9DE", "#8BC5CD", "#65B2BD", "#3E9FAC", "#28666E", "#205258"]
+    const colorBoxes = document.querySelectorAll('.colorbox')
+    colorBoxes.forEach((_colorbox, _key) => {
+        _colorbox.style.backgroundColor = colors[_key]
+    })
 })
 
 // VIOLENCE
@@ -151,8 +175,8 @@ violenceButton.addEventListener('click', () => {
     mapContainer.removeChild(mapSvg)
     // Set colors for violence map
     const paletteScale = d3.scale.linear()
-        .domain([0, 50, 200])
-        .range(["white", "#B43838", "black"])
+        .domain([-30, 50, 150])
+        .range(["black", "#B43838", "white"])
     // Set database for the education map
     const dataset = {}
     datajson.forEach((_country) => {
@@ -165,6 +189,12 @@ violenceButton.addEventListener('click', () => {
         }
     })
     createMap(dataset)
+    // legend
+    const colors = ["#E1AFAF", "#D28888", "#C36060", "#B43838", "#732424", "#5C1D1D"]
+    const colorBoxes = document.querySelectorAll('.colorbox')
+    colorBoxes.forEach((_colorbox, _key) => {
+        _colorbox.style.backgroundColor = colors[_key]
+    })
 })
 
 // GLOBAL
@@ -188,6 +218,12 @@ globalButton.addEventListener('click', () => {
         dataset[country] = { score: score, fillColor: color }
     })
     createMap(dataset)
+    // legend
+    const colors = ["#FFD8B4", "#FFC48E", "#FFB169", "#FF9D43", "#C47833", "#9D6129"]
+    const colorBoxes = document.querySelectorAll('.colorbox')
+    colorBoxes.forEach((_colorbox, _key) => {
+        _colorbox.style.backgroundColor = colors[_key]
+    })
 })
 
 
