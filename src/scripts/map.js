@@ -82,7 +82,7 @@ workButton.addEventListener('click', () => {
     mapContainer.removeChild(mapSvg)
     // Set colors for education map
     const paletteScale = d3.scale.linear()
-        .domain([30, 60, 100])
+        .domain([30, 60, 120])
         .range(["white", "#A9417F", "black"])
     // Set database for the work map
     const dataset = {}
