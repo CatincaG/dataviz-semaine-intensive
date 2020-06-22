@@ -51,6 +51,7 @@ createMap(dataset)
 // EDUCATION
 const educationButton = document.querySelector('.education-button')
 educationButton.addEventListener('click', () => {
+    document.querySelector('#map-container').removeChild('svg')
     delete map
     delete dataset
     const dataset = {}
@@ -64,10 +65,6 @@ educationButton.addEventListener('click', () => {
     })
     createMap(dataset)
 })
-
-
-
-// console.log(dataset_global)
 
 
 

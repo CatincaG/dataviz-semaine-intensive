@@ -42,7 +42,7 @@ curl_close($curl);
     <div id="map-container"></div>
     <!-- Help -->
     <div class="help">
-        <img src="./src/images/help.svg" alt="help">
+        <img src="./assets/svg/icons/help.svg" alt="help">
         <p>Help</p>
     </div>
     <!-- Source -->
