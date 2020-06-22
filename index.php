@@ -31,12 +31,12 @@ curl_close($curl);
     <h1>Gender equality in Europe</h1>
     <!-- Category choice -->
     <ul class="categories">
-        <a href="#" class="global-button"><li>Global</li></a>
-        <a href="#" class="education-button"><li>Education</li></a>
-        <a href="#" class="work-button"><li>Work</li></a>
-        <a href="#" class="health-button"><li>Health</li></a>
-        <a href="#" class="power-button"><li>Power</li></a>
-        <a href="#" class="violence-button"><li>Violence</li></a>
+        <li class="global-button">Global</li>
+        <li class="education-button">Education</li>
+        <li class="work-button">Work</li>
+        <li class="health-button">Health</li>
+        <li class="power-button">Power</li>
+        <li class="violence-button">Violence</li>
     </ul>
     <!-- Map -->
     <div id="map-container"></div>
@@ -46,7 +46,7 @@ curl_close($curl);
         <p>Help</p>
     </div>
     <!-- Source -->
-    <p class="source">2017 data from EUOpen Data</p>
+    <p class="source">2017 datas from EUOpen Data</p>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
