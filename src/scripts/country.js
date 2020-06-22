@@ -12,9 +12,10 @@ class Country
         this.violenceDomain = document.querySelector('.violence-content')
 
         this.studiesIllustration = document.querySelector('div.container-studies-illustration')
-        console.log(this.studiesIllustration)
         this.workIllustration = document.querySelector('img.work-illustration')
         this.violenceIllustration = document.querySelector('img.violence-illustration')
+        this.powerIllustration = document.querySelector('img.power-illustration')
+        this.healthIllustration = document.querySelector('img.health-illustration')
 
         this.chartStudies = document.querySelector('div.js-chart-studies')
         this.chartWork = document.querySelector('div.js-chart-work')
@@ -23,6 +24,9 @@ class Country
         this.chartViolence = document.querySelector('div.js-chart-violence')
 
         this.sourceStudies = document.querySelector('p.source-studies')
+        this.sourceWork = document.querySelector('p.source-work')
+        this.sourceHealth = document.querySelector('p.source-health')
+        this.sourcePower = document.querySelector('p.source-power')
 
         // Set functions
         this.setCurrentDomain()
@@ -54,6 +58,8 @@ class Country
                     this.studiesIllustration.classList.remove('js-hidden')
                     this.workIllustration.classList.add('js-hidden')
                     this.violenceIllustration.classList.add('js-hidden')
+                    this.powerIllustration.classList.add('js-hidden')
+                    this.healthIllustration.classList.add('js-hidden')
 
                     this.chartStudies.classList.remove('js-hidden')
                     this.chartWork.classList.add('js-hidden')
@@ -62,6 +68,9 @@ class Country
                     this.chartViolence.classList.add('js-hidden')
 
                     this.sourceStudies.classList.remove('js-hidden')
+                    this.sourceWork.classList.add('js-hidden')
+                    this.sourceHealth.classList.add('js-hidden')
+                    this.sourcePower.classList.add('js-hidden')
                 } 
                 else if(_button.classList.contains('work-button') && this.workDomain.classList.contains('js-hidden'))
                 {
@@ -74,6 +83,8 @@ class Country
                     this.studiesIllustration.classList.add('js-hidden')
                     this.workIllustration.classList.remove('js-hidden')
                     this.violenceIllustration.classList.add('js-hidden')
+                    this.powerIllustration.classList.add('js-hidden')
+                    this.healthIllustration.classList.add('js-hidden')
 
                     this.chartStudies.classList.add('js-hidden')
                     this.chartWork.classList.remove('js-hidden')
@@ -82,6 +93,9 @@ class Country
                     this.chartViolence.classList.add('js-hidden')
 
                     this.sourceStudies.classList.add('js-hidden')
+                    this.sourceWork.classList.remove('js-hidden')
+                    this.sourceHealth.classList.add('js-hidden')
+                    this.sourcePower.classList.add('js-hidden')
                 } 
                 else if(_button.classList.contains('power-button') && this.powerDomain.classList.contains('js-hidden'))
                 {
@@ -94,6 +108,8 @@ class Country
                     this.studiesIllustration.classList.add('js-hidden')
                     this.workIllustration.classList.add('js-hidden')
                     this.violenceIllustration.classList.add('js-hidden')
+                    this.powerIllustration.classList.remove('js-hidden')
+                    this.healthIllustration.classList.add('js-hidden')
 
                     this.chartStudies.classList.add('js-hidden')
                     this.chartWork.classList.add('js-hidden')
@@ -102,6 +118,9 @@ class Country
                     this.chartViolence.classList.add('js-hidden')
 
                     this.sourceStudies.classList.add('js-hidden')
+                    this.sourceWork.classList.add('js-hidden')
+                    this.sourceHealth.classList.add('js-hidden')
+                    this.sourcePower.classList.remove('js-hidden')
                 }
                 else if(_button.classList.contains('health-button') && this.healthDomain.classList.contains('js-hidden'))
                 {
@@ -114,6 +133,8 @@ class Country
                     this.studiesIllustration.classList.add('js-hidden')
                     this.workIllustration.classList.add('js-hidden')
                     this.violenceIllustration.classList.add('js-hidden')
+                    this.powerIllustration.classList.add('js-hidden')
+                    this.healthIllustration.classList.remove('js-hidden')
 
                     this.chartStudies.classList.add('js-hidden')
                     this.chartWork.classList.add('js-hidden')
@@ -122,6 +143,9 @@ class Country
                     this.chartViolence.classList.add('js-hidden')
 
                     this.sourceStudies.classList.add('js-hidden')
+                    this.sourceWork.classList.add('js-hidden')
+                    this.sourceHealth.classList.remove('js-hidden')
+                    this.sourcePower.classList.add('js-hidden')
                 }
                 else if(_button.classList.contains('violence-button') && this.violenceDomain.classList.contains('js-hidden'))
                 {
@@ -134,6 +158,8 @@ class Country
                     this.studiesIllustration.classList.add('js-hidden')
                     this.workIllustration.classList.add('js-hidden')
                     this.violenceIllustration.classList.remove('js-hidden')
+                    this.powerIllustration.classList.add('js-hidden')
+                    this.healthIllustration.classList.add('js-hidden')
                     
                     this.chartStudies.classList.add('js-hidden')
                     this.chartWork.classList.add('js-hidden')
@@ -142,6 +168,9 @@ class Country
                     this.chartViolence.classList.remove('js-hidden')
 
                     this.sourceStudies.classList.add('js-hidden')
+                    this.sourceWork.classList.add('js-hidden')
+                    this.sourceHealth.classList.add('js-hidden')
+                    this.sourcePower.classList.add('js-hidden')
                 }
             })
         })

@@ -272,7 +272,7 @@
         <p class="description">less than men</p>
     </div>
     <!-- Illustration work -->
-    <img src="./assets/svg/illustrations/work-illustration.svg" class="work-illustration js-hidden" alt="girl working illustration">
+    <img src="./assets/svg/illustrations/work-balance-income.svg" class="work-illustration js-hidden" alt="girl working illustration">
     <!--Container of the chart-->
     <div class="chart-container js-chart-work js-hidden" style="position: relative; height:20vh; width:62vw">
         <canvas id="chart-data-work" class="canvas-work"></canvas>
@@ -319,6 +319,7 @@
     })
     </script>
     <!--End of the script for the chart-->
+    <p class="source-work js-hidden">https://eige.europa.eu/gender-statistics/dgs/indicator/eustrat_sege1619_gpaygap__tesem180/datatable</p>
     <!--
     *--------------
     *
@@ -333,7 +334,7 @@
         <p class="description">are woman in <?= end($currentDataPower)->year ?></p>
     </div>
     <!-- Illustration power -->
-    <img src="" alt="">
+    <img src="./assets/svg/illustrations/power-all-content.svg" class="power-illustration js-hidden" alt="woman and men flying illustration">
     <!--Container of the chart-->
     <div class="chart-container js-chart-power js-hidden" style="position: relative; height:20vh; width:62vw">
         <canvas id="chart-data-power" class="canvas-power"></canvas>
@@ -395,6 +396,7 @@
     })
     </script>
     <!--End of the script for the chart-->
+    <p class="source-power js-hidden">https://eige.europa.eu/gender-statistics/dgs/indicator/wmidm_bus_bus__wmid_comp_compex/datatable</p>
     <!--
     *--------------
     *
@@ -409,7 +411,7 @@
         <p class="description">in <?= end($currentDataHealth)->year ?></p>
     </div>
     <!-- Illustration health -->
-    <img src="" alt="">
+    <img src="./assets/svg/illustrations/health-all-content.svg" class="health-illustration js-hidden" alt="grandma illustration">
     <!--Container of the chart-->
     <div class="chart-container js-chart-health js-hidden" style="position: relative; height:20vh; width:62vw">
         <canvas id="chart-data-health" class="canvas-health"></canvas>
@@ -471,6 +473,7 @@
     })
     </script>
     <!--End of the script for the chart-->
+    <p class="source-health js-hidden">https://eige.europa.eu/gender-statistics/dgs/indicator/ta_hlthmort_hlth_years__hlth_silc_17/hbar</p>
     <!--
     *--------------
     *
