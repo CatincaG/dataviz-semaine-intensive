@@ -80,22 +80,38 @@
     // var_dump($dataViolence);
     // echo '</pre>';
 
-    // Filtering dataStudies array
+    /*
+    *--------------
+    *
+    * Filtering data in arrays to have only the parts that are relevant
+    *
+    *--------------
+    */
+
+    // dataStudies array
     $currentDataStudies = array_filter($dataStudies, function($d) {
         return $d->sex === 'W';
     });
 
-    // Filtering dataPower array
+    // dataPower array
     $currentDataPower = array_filter($dataPower, function($d) {
         return $d->sex === 'W' && $d->position === 'CEO (Chief Executive Officer)';
     });
 
-    // Filtering dataHealth array
+    // dataHealth array
     $currentDataHealth = array_filter($dataHealth, function($d) {
         return $d->sex === 'W' && $d->info === 'Life expectancy in absolute value at birth';
     });
 
-    // Convert array of objects to array of numbers for the chart in order to display only the years once
+    /*
+    *--------------
+    *
+    * Convert array of objects to array of numbers for the chart in order to display only the years once
+    *
+    *--------------
+    */
+
+    // Years for studies
     $years = array_map(function($d) {
         return $d->year;
     }, $dataStudies);
@@ -103,6 +119,42 @@
 
     $firstYear = $years[0];
     $lastYear = end($years);
+
+    // Years for work category
+    $workYears = array_map(function($d) {
+        return $d->year;
+    }, $dataWork);
+    $workYears = array_unique($workYears);
+
+    $workFirstYear = $workYears[0];
+    $workLastYear = end($workYears);
+
+    // Years for power category
+    $powerYears = array_map(function($d) {
+        return $d->year;
+    }, $currentDataPower);
+    $powerYears = array_unique($powerYears);
+
+    $powerFirstYear = $powerYears[0];
+    $powerLastYear = end($powerYears);
+
+    // Years for health category
+    $healthYears = array_map(function($d) {
+        return $d->year;
+    }, $currentDataHealth);
+    $healthYears = array_unique($healthYears);
+
+    //$healthFirstYear = $healthYears[0];
+    $healthLastYear = end($healthYears);
+
+    // Years for violence category
+    $violenceYears = array_map(function($d) {
+        return $d->year;
+    }, $dataViolence);
+    $violenceYears = array_unique($violenceYears);
+
+    //$violenceFirstYear = $violenceYears[0];
+    $violenceLastYear = end($violenceYears);
 ?>
 
 <!DOCTYPE html>
@@ -133,8 +185,8 @@
     <!-- Illustration studies -->
     <img src="./assets/svg/illustrations/studies-woman.svg" class="studies-illustration" alt="graduated girl illustration">
     <!--Container of the chart-->
-    <div class="chart-container chart-studies" style="position: relative; height:20vh; width:62vw">
-        <canvas id="myChart"></canvas>
+    <div class="chart-container js-chart-studies" style="position: relative; height:20vh; width:62vw">
+        <canvas id="myChart" class="canvas-studies"></canvas>
     </div>
     <!--Script for the chart-->
     <script>
@@ -142,49 +194,49 @@
 
     Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
     Chart.defaults.global.defaultFontColor = 'black'
-    const myChart = new Chart(ctx, {
+    let myChart = new Chart(ctx, {
     type: 'line',
 
         data: {
-        // Years
-        labels: [<?php
-            foreach ($years as $_year):
-                echo $_year.',';
-            endforeach;
-        ?>],
-
-        datasets: [{
-            // Woman
-            label: 'Woman',
-            data: [<?php
-            foreach ($dataStudies as $dataItem): if($dataItem->sex === 'W') {
-                echo str_replace(',','.',$dataItem->value).',';
-            }
-            endforeach;
+            // Years
+            labels: [<?php
+                foreach ($years as $_year):
+                    echo $_year.',';
+                endforeach;
             ?>],
-            backgroundColor: "rgba(246, 174, 45, 0.4)"
-            }, {
 
-            // Men
-            label: 'Men',
-            data: [<?php
-            foreach ($dataStudies as $dataItem):
-                if($dataItem->sex === 'M')
-                {
-                echo str_replace(',','.',$dataItem->value).',';
+            datasets: [{
+                // Woman
+                label: 'Woman',
+                data: [<?php
+                foreach ($dataStudies as $dataItem): if($dataItem->sex === 'W') {
+                    echo str_replace(',','.',$dataItem->value).',';
                 }
-            endforeach;
-            ?>],
-            backgroundColor: "rgba(89, 65, 169, 1)"
-        }]
+                endforeach;
+                ?>],
+                backgroundColor: "rgba(246, 174, 45, 0.4)"
+                }, {
+
+                // Men
+                label: 'Men',
+                data: [<?php
+                foreach ($dataStudies as $dataItem):
+                    if($dataItem->sex === 'M')
+                    {
+                    echo str_replace(',','.',$dataItem->value).',';
+                    }
+                endforeach;
+                ?>],
+                backgroundColor: "rgba(89, 65, 169, 1)"
+            }]
         },
 
         options: {
-        legend: { display: true },
-        title: {
-            display: true,
-            text: 'Percentage of women and men students in <?= end($dataStudies)->country?> from <?= $firstYear ?> to <?= $lastYear ?>'
-        }
+            legend: { display: true },
+            title: {
+                display: true,
+                text: 'Percentage of women and men students in <?= end($dataStudies)->country?> from <?= $firstYear ?> to <?= $lastYear ?>'
+            }
         }
     })
     </script>
@@ -204,6 +256,49 @@
     </div>
     <!-- Illustration work -->
     <img src="./assets/svg/illustrations/work-illustration.svg" class="work-illustration js-hidden" alt="girl working illustration">
+    <!--Container of the chart-->
+    <div class="chart-container js-chart-work js-hidden" style="position: relative; height:20vh; width:62vw">
+        <canvas id="chart-data-work" class="canvas-work"></canvas>
+    </div>
+    <!--Script for the chart-->
+    <script>
+    const chartWork = document.getElementById('chart-data-work').getContext('2d')
+
+    Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
+    Chart.defaults.global.defaultFontColor = 'black'
+    let chartDataWork = new Chart(chartWork, {
+    type: 'line',
+
+        data: {
+            // Years
+            labels: [<?php
+                foreach ($workYears as $_year):
+                    echo $_year.',';
+                endforeach;
+            ?>],
+
+            datasets: [{
+                // Woman
+                label: 'Woman',
+                data: [<?php
+                foreach ($dataWork as $_dataWork):
+                    echo str_replace(',','.',$_dataWork->value).',';
+                endforeach;
+                ?>],
+                backgroundColor: "rgba(169, 65, 127, 0.6)"
+            }]
+        },
+
+        options: {
+            legend: { display: true },
+            title: {
+                display: true,
+                text: 'Wage difference between woman and men in <?= end($dataWork)->country?> from <?= $workFirstYear ?> to <?= $workLastYear ?>'
+            }
+        }
+    })
+    </script>
+    <!--End of the script for the chart-->
     <!--
     *--------------
     *
@@ -219,6 +314,64 @@
     </div>
     <!-- Illustration power -->
     <img src="" alt="">
+    <!--Container of the chart-->
+    <div class="chart-container js-chart-power js-hidden" style="position: relative; height:20vh; width:62vw">
+        <canvas id="chart-data-power" class="canvas-power"></canvas>
+    </div>
+    <!--Script for the chart-->
+    <script>
+    const chartPower = document.getElementById('chart-data-power').getContext('2d')
+
+    Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
+    Chart.defaults.global.defaultFontColor = 'black'
+    let chartDataPower = new Chart(chartPower, {
+    type: 'bar',
+
+        data: {
+            // Years
+            labels: [<?php
+                foreach ($powerYears as $_year):
+                    echo $_year.',';
+                endforeach;
+            ?>],
+
+            datasets: [{
+                // Woman
+                label: 'Woman',
+                data: [<?php
+                foreach ($dataPower as $_dataPower):
+                    if($_dataPower->sex === 'W' && $_dataPower->position === 'CEO (Chief Executive Officer)') {
+                        echo str_replace(',','.',$_dataPower->value).',';
+                    }
+                endforeach;
+                ?>],
+                backgroundColor: "rgba(62, 159, 172, 0.8)"
+                }, {
+
+                // Men
+                label: 'Men',
+                data: [<?php
+                foreach ($dataPower as $_dataPower):
+                    if($_dataPower->sex === 'M' && $_dataPower->position === 'CEO (Chief Executive Officer)')
+                    {
+                    echo str_replace(',','.',$_dataPower->value).',';
+                    }
+                endforeach;
+                ?>],
+                backgroundColor: "rgba(216, 236, 238, 1)"
+            }]
+        },
+
+        options: {
+            legend: { display: true },
+            title: {
+                display: true,
+                text: 'Percentage of women and men who have the position of CEO in <?= end($currentDataPower)->country?> from <?= $powerFirstYear ?> to <?= $powerLastYear ?>'
+            }
+        }
+    })
+    </script>
+    <!--End of the script for the chart-->
     <!--
     *--------------
     *
@@ -234,6 +387,64 @@
     </div>
     <!-- Illustration health -->
     <img src="" alt="">
+    <!--Container of the chart-->
+    <div class="chart-container js-chart-health js-hidden" style="position: relative; height:20vh; width:62vw">
+        <canvas id="chart-data-health" class="canvas-health"></canvas>
+    </div>
+    <!--Script for the chart-->
+    <script>
+    const chartHealth = document.getElementById('chart-data-health').getContext('2d')
+
+    Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
+    Chart.defaults.global.defaultFontColor = 'black'
+    let chartDataHealth = new Chart(chartHealth, {
+    type: 'bar',
+
+        data: {
+            // Years
+            labels: [<?php
+                foreach ($healthYears as $_year):
+                    echo $_year.',';
+                endforeach;
+            ?>],
+
+            datasets: [{
+                // Woman
+                label: 'Woman',
+                data: [<?php
+                foreach ($dataHealth as $_dataHealth):
+                    if($_dataHealth->sex === 'W' && $_dataHealth->info === 'Life expectancy in absolute value at birth') {
+                        echo str_replace(',','.',$_dataHealth->value).',';
+                    }
+                endforeach;
+                ?>],
+                backgroundColor: "rgba(65, 169, 94, 0.8)"
+                }, {
+
+                // Men
+                label: 'Men',
+                data: [<?php
+                foreach ($dataHealth as $_dataHealth):
+                    if($_dataHealth->sex === 'M' && $_dataHealth->info === 'Life expectancy in absolute value at birth')
+                    {
+                    echo str_replace(',','.',$_dataHealth->value).',';
+                    }
+                endforeach;
+                ?>],
+                backgroundColor: "rgba(65, 169, 94, 0.4)"
+            }]
+        },
+
+        options: {
+            legend: { display: true },
+            title: {
+                display: true,
+                text: 'Life expectancy in absolute value at birth for women and men in <?= end($currentDataHealth)->country?> from  to <?= $healthLastYear ?>'
+            }
+        }
+    })
+    </script>
+    <!--End of the script for the chart-->
     <!--
     *--------------
     *
@@ -243,7 +454,7 @@
     * -->
     <!-- Display data-->
     <div class="violence-content js-hidden">
-        <p class="description">In <?= $dataViolence[0]->year ?></p>
+        <!-- <p class="description">In <?= $dataViolence[0]->year ?></p> -->
         <p class="value">
             <?php
                 if(!empty($dataViolence))

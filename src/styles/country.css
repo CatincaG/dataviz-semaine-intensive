@@ -54,21 +54,39 @@ p.missing-data
 
 /* Elements */
 
-div
-{
-    position: absolute;
-}
-
 .studies-content
 {
+    position: absolute;
     top: 4vw;
     right: 36vw;
 }
 
 .work-content
 {
-    top: 8vw;
+    position: absolute;
+    top: 4vw;
     left: 24vw;
+}
+
+.power-content
+{
+    position: absolute;
+    top: 8vw;
+    left: 8vw;
+}
+
+.health-content
+{
+    position: absolute;
+    bottom: 2vw;
+    right: 4vw;
+}
+
+.violence-content
+{
+    position: absolute;
+    top: 12vw;
+    left: 12vw;
 }
 
 .domains
@@ -98,7 +116,7 @@ img.studies-illustration
 img.work-illustration
 {
     position: absolute;
-    right: 12vw;
+    right: 2vw;
     bottom: 0;
     width: 40vw;
     height: 40vw;
@@ -108,8 +126,30 @@ img.work-illustration
 canvas
 {
     position: absolute;
+}
+
+.canvas-studies
+{
     left: 24vw;
     top: 12vw;
+}
+
+.canvas-work
+{
+    left: 2vw;
+    bottom: -22vw;
+}
+
+.canvas-power
+{
+    left: 24vw;
+    bottom: -8vw;
+}
+
+.canvas-health
+{
+    right: -27vw;
+    bottom: 12vw;
 }
 
 /* js elements */
