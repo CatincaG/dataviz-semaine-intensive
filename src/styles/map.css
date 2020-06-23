@@ -1,5 +1,5 @@
 body{
-    background-color: #DCEAED;
+    background-color: #C3E0E9;
     font-family: 'Rubik', sans-serif;
     color: #333333;
     overflow: hidden;
@@ -7,9 +7,13 @@ body{
 
 h1{
     font-weight: 500;
-    text-align: center;
     font-size: 2rem;
-    margin-bottom: 2%;
+}
+
+h2{
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 #map-container{
@@ -23,49 +27,19 @@ h1{
     position: absolute;
     bottom: 10%;
     right: 5%;
-    width: 30%;
-    height: 10%;
+    padding: 1%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     background-color: white;
-    border: 1px solid #4F4F4F;
+    border: 1px solid #333333;
     border-radius: 5px;
 }
 
 .legend p{
     margin: 2%;
-    color: #4F4F4F;
 }
-
-.colors{
-    display: flex;
-    flex-direction: row;
-}
-
-.legend .colors .colorbox{
-    width: 3vw;
-    height: 3vh;
-    background-color: #B43107;
-}
-
-.legend .colors .color2{
-    background-color: #D6902E;
-}
-
-.legend .colors .color3{
-    background-color: #E4B63E;
-}
-
-.legend .colors .color4{
-    background-color: #BDAD3D;
-}
-
-.legend .colors .color5{
-    background-color: #4B9339;
-}
-
 
 .source{
     position: absolute;
@@ -73,63 +47,35 @@ h1{
     left: 10%;
 }
 
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .categories{
-    position: absolute;
-    top: 12%;
-    left: 5%;
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.categories ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+    background-color: #D8ECEE;
 }
 
 .categories li{
+    font-weight: 500;
+    font-size: 2rem;
     list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 135px;
-    height: 35px;
-    margin: 10%;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    border: 2px solid;
-    border-radius: 100px;
-    z-index: 10;
-    cursor: pointer;
 }
 
-
-
-/* Buttons colors */
-
-.categories .global-button{
-    color: #FF9D43;
-    border-color: #FF9D43;
+.arrow{
+    height: 16px;
+    width: auto;
 }
-
-.categories .education-button{
-    color: #5941A9;
-    border-color: #5941A9;
-}
-
-.categories .work-button{
-    color: #A9417F;
-    border-color: #A9417F;
-}
-
-.categories .health-button{
-    color: #41A95E;
-    border-color: #41A95E;
-}
-
-.categories .power-button{
-    color: #3E9FAC;
-    border-color: #3E9FAC;
-}
-
-
-@media screen and (min-width: 1400px) {
-    .categories{
-        top: 20%;
-        left: 12%;
-    }
-  }
