@@ -362,7 +362,7 @@
     * -->
     <!-- Display data-->
     <div class="power-content js-hidden">
-        <p class="description">For 100 CEO, only</p>
+        <p class="description"> For 100 CEO, </p>
         <p class="value"><?= intval(end($currentDataPower)->value) ?></p>
         <p class="description">were woman in <?= end($currentDataPower)->year ?></p>
     </div>
