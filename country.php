@@ -216,7 +216,7 @@
     <!-- Display data-->
     <div class="studies-content">
         <p class="value"><?= end($currentDataStudies)->value.'%' ?></p>
-        <p class="description">of students are women in <?= end($currentDataStudies)->year ?></p>
+        <p class="description">of students were women in <?= end($currentDataStudies)->year ?></p>
     </div>
     <!-- Illustration studies -->
     <div class="container-studies-illustration">
@@ -293,9 +293,9 @@
     * -->
     <!-- Display data-->
     <div class="work-content js-hidden">
-        <p class="description">Women earn</p>
+        <p class="description"> Women earned </p>
         <p class="value"><?= intval(end($dataWork)->value).'%' ?></p>
-        <p class="description">less than men</p>
+        <p class="description">less than men in <?= $workLastYear ?></p>
     </div>
     <!-- Illustration work -->
     <img src="./assets/svg/illustrations/work-balance-income.svg" class="work-illustration js-hidden" alt="girl working illustration">
@@ -364,7 +364,7 @@
     <div class="power-content js-hidden">
         <p class="description">For 100 CEO, only</p>
         <p class="value"><?= intval(end($currentDataPower)->value) ?></p>
-        <p class="description">are woman in <?= end($currentDataPower)->year ?></p>
+        <p class="description">were woman in <?= end($currentDataPower)->year ?></p>
     </div>
     <!-- Illustration power -->
     <img src="./assets/svg/illustrations/power-all-content.svg" class="power-illustration js-hidden" alt="woman and men flying illustration">
@@ -439,7 +439,7 @@
     * -->
     <!-- Display data-->
     <div class="health-content js-hidden">
-        <p class="description">Life expectancy for women is</p>
+        <p class="description">Life expectancy for women was</p>
         <p class="value"><?= intval(end($currentDataHealth)->value).' '.'years old' ?></p>
         <p class="description">in <?= end($currentDataHealth)->year ?></p>
     </div>
