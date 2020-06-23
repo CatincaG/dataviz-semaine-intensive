@@ -32,14 +32,19 @@ curl_close($curl);
         <h1>Gender equality in Europe for</h1>
         <!-- Category choice -->
         <div class="categories">
-            <ul class="menu">
+            <div class="selected-category">
+                all categories
+                <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.0837 12.4236C8.04423 12.484 7.95577 12.484 7.9163 12.4236L0.101155 0.469906C0.0576717 0.403396 0.105391 0.315185 0.184855 0.315185L15.8151 0.315186C15.8946 0.315186 15.9423 0.403396 15.8988 0.469907L8.0837 12.4236Z" fill="#333333"/>
+                </svg>
+            </div>
+            <ul class="menu hidden">
                 <li class="global-button">all categories</li>
                 <li class="education-button">education</li>
                 <li class="work-button">work</li>
                 <li class="health-button">health</li>
                 <li class="power-button">responsability</li>
             </ul>
-            <img class="arrow" src="./assets/icons/arrow.svg" alt="arrow">
         </div>
     </div>
     <!-- Subtitle -->

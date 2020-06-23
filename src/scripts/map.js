@@ -1,3 +1,14 @@
+// Choice of category
+const categoryChoice = document.querySelector('.selected-category')
+const menu = document.querySelector('.menu')
+categoryChoice.addEventListener('click', () => {
+    if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden')
+    } else {
+        menu.classList.add('hidden')
+    }
+})
+
 // Datas
 const datajson = JSON.parse(data)
 const dataset = {}
@@ -164,6 +175,5 @@ globalButton.addEventListener('click', () => {
     createMap(dataset)
     redirection()
 })
-
 
 
