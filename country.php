@@ -64,10 +64,11 @@
     // echo '<pre>';
     // var_dump($dataHealth);
     // echo '</pre>';
+    // exit;
 
     //Instantiate curl for data violence
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/dataviolence');
+    curl_setopt($curl, CURLOPT_URL, 'https://bridge.buddyweb.fr/api/gendergap/dataviolence?id='.$id);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $dataViolence = curl_exec($curl);
     curl_close($curl);
@@ -79,6 +80,7 @@
     // echo '<pre>';
     // var_dump($dataViolence);
     // echo '</pre>';
+    // exit;
 
     /*
     *--------------
@@ -103,8 +105,17 @@
         return $d->sex === 'W' && $d->info === 'Life expectancy in absolute value at birth';
     });
 
+    // dataViolence array
+    $currentDataViolence = array_filter($dataViolence, function($d) {
+        return $d->unit === 'Number' && $d->crime === 'Rape';
+    });
+
+    $currentDataViolenceWoman = array_filter($currentDataViolence, function($d) {
+        return $d->sex === 'W';
+    });
+
     // echo '<pre>';
-    // var_dump($currentDataHealth);
+    // var_dump($currentDataViolence);
     // echo '</pre>';
     // exit;
 
@@ -158,13 +169,18 @@
     // exit;
 
     // Years for violence category
-    // $violenceYears = array_map(function($d) {
-    //     return $d->year;
-    // }, $dataViolence);
-    // $violenceYears = array_unique($violenceYears);
+    $violenceYears = array_map(function($d) {
+        return $d->year;
+    }, $currentDataViolence);
+    $violenceYears = array_unique($violenceYears);
 
-    // $violenceFirstYear = array_values($violenceYears)[0];
-    // $violenceLastYear = end($violenceYears);
+    $violenceFirstYear = array_values($violenceYears)[0];
+    $violenceLastYear = end($violenceYears);
+
+    // echo '<pre>';
+    // var_dump($violenceYears);
+    // echo '</pre>';
+    // exit;
 
     /*
     *--------------
@@ -424,7 +440,7 @@
     <!-- Display data-->
     <div class="health-content js-hidden">
         <p class="description">Life expectancy for women is</p>
-        <p class="value"><?= intval(end($currentDataHealth)->value).' '.'year old' ?></p>
+        <p class="value"><?= intval(end($currentDataHealth)->value).' '.'years old' ?></p>
         <p class="description">in <?= end($currentDataHealth)->year ?></p>
     </div>
     <!-- Illustration health -->
@@ -499,80 +515,75 @@
     *--------------
     * -->
     <!-- Display data-->
-    <!-- <div class="violence-content js-hidden">
-        <p class="description"> 
-            In 
-            <?php
-                foreach ($dataViolence as $_dataViolence):
-                    if($id === $_dataViolence->id)
-                    {
-                        echo $_dataViolence->country.',';
-                    }
-                endforeach;
-            ?>
-        </p>
-        <p class="value">
-            <?php
-                foreach ($dataViolence as $_dataViolence):
-                    if($id === $_dataViolence->id)
-                    {
-                        echo intval($_dataViolence->value).' '.'000';
-                    }
-                endforeach;
-            ?>
-        </p>
-        <p class="description"> woman were raped in 2017</p>
-        <p class ="missing-data">
+    <div class="violence-content js-hidden">
+        <p class="description"> In <?= end($currentDataViolenceWoman)->country ?>, </p>
+        <p class="value"><?= end($currentDataViolenceWoman)->value ?></p>
+        <p class="description"> woman were raped in <?= $violenceLastYear ?></p>
+        <!-- <p class ="missing-data">
             <?php
                 if(empty($dataViolence))
                 {
                     echo('There is no data available for this country');
                 }
             ?>
-        </p>
-    </div> -->
+        </p> -->
+    </div>
     <!-- Illustration violence -->
     <img src="./assets/svg/illustrations/violence-woman.svg" class="violence-illustration js-hidden" alt="woman sitting illustration">
     <!-- Container of the doughnut -->
-    <!-- <div class="chart-container js-chart-violence js-hidden" style="position: relative; height:20vh; width:62vw">
+    <div class="chart-container js-chart-violence js-hidden" style="position: relative; height:20vh; width:62vw">
         <canvas id="chart-data-violence" class="canvas-violence"></canvas>
-    </div> -->
+    </div>
     <!--Script for the chart-->
-    <!-- <script>
+    <script>
     const chartDoughnutViolence = document.getElementById('chart-data-violence').getContext('2d')
 
     Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
     Chart.defaults.global.defaultFontColor = 'black'
 
     let chartDataViolence = new Chart(chartDoughnutViolence, {
-    type: 'doughnut',
+    type: 'bar',
 
         data: {
-            // Name of countries
+            // Years
             labels: [<?php
-                foreach ($dataViolence as $_dataViolence):
-                    echo '"'.$_dataViolence->country.'"'.',';
+                foreach ($violenceYears as $_year):
+                    echo $_year.',';
                 endforeach;
             ?>],
 
             datasets: [{
-                // Numbers of victim
-                label: 'Per hundred thousand inhabitants',
+                // Women
+                label: 'Women',
                 data: [<?php
-                foreach ($dataViolence as $_dataViolence):
-                    echo str_replace(',','.',$_dataViolence->value).',';
+                foreach ($currentDataViolence as $_dataViolence):
+                    if($_dataViolence->sex === 'W') {
+                        echo $_dataViolence->value.',';
+                    }
                 endforeach;
                 ?>],
-                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#f6068e", "#2a62b2", "#b27a2a", "#face4e", "#f2bae0", "#5a2ea6", "#508810", "#962612", "#0e2432", "#bd6c1f", "#89a0d8", "#8acada", "#da9a8a", "#900c94", "#10940c", "#f06644"]
+                backgroundColor: "#B43838"
+                }, {
 
+                // Men
+                label: 'Men',
+                data: [<?php
+                foreach ($currentDataViolence as $_dataViolence):
+                    if($_dataViolence->sex === 'M')
+                    {
+                        echo $_dataViolence->value.',';
+                    }
+                endforeach;
+                ?>],
+                backgroundColor: "#C36060"
             }]
         },
 
         options: {
-            legend: { display: true, position: 'bottom', align: 'start' },
+            legend: { display: true },
             title: {
                 display: true,
-                text: 'Number of woman victim of rape per hundred thousand inhabitants, in 2017',
+                text: 'Number of women and men victim of rape in <?= end($currentDataViolenceWoman)->country ?> , from <?= $violenceFirstYear ?> to <?= $violenceLastYear ?>',
                 fontSize: 14,
                 fontStyle: '500',
                 padding: 16
@@ -587,7 +598,7 @@
             }
         }
     })
-    </script> -->
+    </script>
     <!--End of the script for the chart-->
     <!--
     *--------------
