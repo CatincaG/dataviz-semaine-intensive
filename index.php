@@ -21,37 +21,38 @@ curl_close($curl);
 
 <head>
     <meta charset="utf-8">
-    <title>Gender equality in Europe</title>
+    <title>Equally</title>
     <link rel="stylesheet" href="./src/styles/map.css">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <!-- Title -->
-    <h1>Gender equality in Europe</h1>
-    <!-- Category choice -->
-    <ul class="categories">
-        <li class="global-button">Global</li>
-        <li class="education-button">Education</li>
-        <li class="work-button">Work</li>
-        <li class="health-button">Health</li>
-        <li class="power-button">Power</li>
-        <li class="violence-button">Violence</li>
-    </ul>
+    <div class="title">
+        <h1>Gender equality in Europe for</h1>
+        <!-- Category choice -->
+        <div class="categories">
+            <ul class="menu">
+                <li class="global-button">all categories</li>
+                <li class="education-button">education</li>
+                <li class="work-button">work</li>
+                <li class="health-button">health</li>
+                <li class="power-button">responsability</li>
+            </ul>
+            <img class="arrow" src="./assets/icons/arrow.svg" alt="arrow">
+        </div>
+    </div>
+    <!-- Subtitle -->
+    <h2>The Gender Equality Index is an equality success score calculated as a percentage</h2>
     <!-- Map -->
     <div id="map-container"></div>
     <!-- Legend -->
     <div class="legend">
-        <p>Bad</p>
+        <p>Inequality</p>
         <div class="colors">
-            <div class="colorbox color1"></div>
-            <div class="colorbox color2"></div>
-            <div class="colorbox color3"></div>
-            <div class="colorbox color4"></div>
-            <div class="colorbox color5"></div>
-            <div class="colorbox color6"></div>
+            <img src="./assets/svg/gradient.svg" alt="gradient">
         </div>
-        <p>Excellent</p>
+        <p>Equality</p>
     </div>
     <!-- Source -->
     <p class="source">2017 datas from EUOpen Data</p>
