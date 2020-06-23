@@ -59,7 +59,7 @@ curl_close($curl);
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-    <script src="node_modules/datamaps/dist/datamaps.world.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.9/datamaps.all.min.js"></script>
     <script src="src/scripts/map.js"></script>
 </body>
 </html>
