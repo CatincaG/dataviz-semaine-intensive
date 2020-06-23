@@ -47,28 +47,25 @@ h1{
 .legend .colors .colorbox{
     width: 3vw;
     height: 3vh;
-    background-color: #FFD8B4;
+    background-color: #B43107;
 }
 
 .legend .colors .color2{
-    background-color: #FFC48E;
+    background-color: #D6902E;
 }
 
 .legend .colors .color3{
-    background-color: #FFB169;
+    background-color: #E4B63E;
 }
 
 .legend .colors .color4{
-    background-color: #FF9D43;
+    background-color: #BDAD3D;
 }
 
 .legend .colors .color5{
-    background-color: #C47833;
+    background-color: #4B9339;
 }
 
-.legend .colors .color6{
-    background-color: #9D6129;
-}
 
 .source{
     position: absolute;
@@ -129,10 +126,6 @@ h1{
     border-color: #3E9FAC;
 }
 
-.categories .violence-button{
-    color: #B43838;
-    border-color: #B43838;
-}
 
 @media screen and (min-width: 1400px) {
     .categories{

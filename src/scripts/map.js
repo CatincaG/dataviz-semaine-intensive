@@ -48,8 +48,8 @@ const redirection = () => {
 
 // Colors
 const paletteScale = d3.scale.linear()
-    .domain([30, 60, 120])
-    .range(["white", "#FF9D43", "black"])
+    .domain([10, 65, 100])
+    .range(["#B43107", "#E4B63E", "#4B9339"])
 
 
 // Set database for the global map at first
@@ -71,10 +71,6 @@ educationButton.addEventListener('click', () => {
     const mapContainer = document.querySelector('#map-container')
     const mapSvg = mapContainer.querySelector('svg')
     mapContainer.removeChild(mapSvg)
-    // Set colors for education map
-    const paletteScale = d3.scale.linear()
-        .domain([30, 60, 120])
-        .range(["white", "#5941A9", "black"])
     // Set database for the education map
     const dataset = {}
     datajson.forEach((_country) => {
@@ -85,12 +81,6 @@ educationButton.addEventListener('click', () => {
         dataset[country] = { score: score, fillColor: color }
     })
     createMap(dataset)
-    // legend
-    const colors = ["#BDB3DD", "#9B8DCB", "#7A67BA", "#5941A9", "#392A6C", "#2E2256"]
-    const colorBoxes = document.querySelectorAll('.colorbox')
-    colorBoxes.forEach((_colorbox, _key) => {
-        _colorbox.style.backgroundColor = colors[_key]
-    })
     redirection()
 })
 
@@ -101,10 +91,6 @@ workButton.addEventListener('click', () => {
     const mapContainer = document.querySelector('#map-container')
     const mapSvg = mapContainer.querySelector('svg')
     mapContainer.removeChild(mapSvg)
-    // Set colors for education map
-    const paletteScale = d3.scale.linear()
-        .domain([30, 60, 120])
-        .range(["white", "#A9417F", "black"])
     // Set database for the work map
     const dataset = {}
     datajson.forEach((_country) => {
@@ -115,12 +101,6 @@ workButton.addEventListener('click', () => {
         dataset[country] = { score: score, fillColor: color }
     })
     createMap(dataset)
-    // legend
-    const colors = ["#DDB3CC", "#CB8DB2", "#BA6799", "#A9417F", "#6C2A52", "#562242"]
-    const colorBoxes = document.querySelectorAll('.colorbox')
-    colorBoxes.forEach((_colorbox, _key) => {
-        _colorbox.style.backgroundColor = colors[_key]
-    })
     redirection()
 })
 
@@ -131,10 +111,6 @@ healthButton.addEventListener('click', () => {
     const mapContainer = document.querySelector('#map-container')
     const mapSvg = mapContainer.querySelector('svg')
     mapContainer.removeChild(mapSvg)
-    // Set colors for health map
-    const paletteScale = d3.scale.linear()
-        .domain([40, 70, 110])
-        .range(["white", "#41A95E", "black"])
     // Set database for the education map
     const dataset = {}
     datajson.forEach((_country) => {
@@ -145,12 +121,6 @@ healthButton.addEventListener('click', () => {
         dataset[country] = { score: score, fillColor: color }
     })
     createMap(dataset)
-    // legend
-    const colors = ["#B3DDBF", "#8DCB9E", "#67BA7E", "#41A95E", "#2A6C3C", "#225630"]
-    const colorBoxes = document.querySelectorAll('.colorbox')
-    colorBoxes.forEach((_colorbox, _key) => {
-        _colorbox.style.backgroundColor = colors[_key]
-    })
     redirection()
 })
 
@@ -161,10 +131,6 @@ powerButton.addEventListener('click', () => {
     const mapContainer = document.querySelector('#map-container')
     const mapSvg = mapContainer.querySelector('svg')
     mapContainer.removeChild(mapSvg)
-    // Set colors for power map
-    const paletteScale = d3.scale.linear()
-        .domain([20, 60, 110])
-        .range(["white", "#3E9FAC", "black"])
     // Set database for the education map
     const dataset = {}
     datajson.forEach((_country) => {
@@ -175,46 +141,9 @@ powerButton.addEventListener('click', () => {
         dataset[country] = { score: score, fillColor: color }
     })
     createMap(dataset)
-    // legend
-    const colors = ["#B2D9DE", "#8BC5CD", "#65B2BD", "#3E9FAC", "#28666E", "#205258"]
-    const colorBoxes = document.querySelectorAll('.colorbox')
-    colorBoxes.forEach((_colorbox, _key) => {
-        _colorbox.style.backgroundColor = colors[_key]
-    })
     redirection()
 })
 
-// VIOLENCE
-const violenceButton = document.querySelector('.violence-button')
-violenceButton.addEventListener('click', () => {
-    // delete former map
-    const mapContainer = document.querySelector('#map-container')
-    const mapSvg = mapContainer.querySelector('svg')
-    mapContainer.removeChild(mapSvg)
-    // Set colors for violence map
-    const paletteScale = d3.scale.linear()
-        .domain([-30, 50, 150])
-        .range(["black", "#B43838", "white"])
-    // Set database for the education map
-    const dataset = {}
-    datajson.forEach((_country) => {
-        const country = _country.country
-        if (_country.violence_score != null) {
-            _country.violence_score = parseFloat(_country.violence_score)
-            const score = _country.violence_score
-            const color = paletteScale(score)
-            dataset[country] = { score: score, fillColor: color }
-        }
-    })
-    createMap(dataset)
-    // legend
-    const colors = ["#E1AFAF", "#D28888", "#C36060", "#B43838", "#732424", "#5C1D1D"]
-    const colorBoxes = document.querySelectorAll('.colorbox')
-    colorBoxes.forEach((_colorbox, _key) => {
-        _colorbox.style.backgroundColor = colors[_key]
-    })
-    redirection()
-})
 
 // GLOBAL
 const globalButton = document.querySelector('.global-button')
@@ -223,10 +152,6 @@ globalButton.addEventListener('click', () => {
     const mapContainer = document.querySelector('#map-container')
     const mapSvg = mapContainer.querySelector('svg')
     mapContainer.removeChild(mapSvg)
-    // Set colors for education map
-    const paletteScale = d3.scale.linear()
-        .domain([30, 60, 120])
-        .range(["white", "#FF9D43", "black"])
     // Set database for the global map
     const dataset = {}
     datajson.forEach((_country) => {
@@ -237,12 +162,6 @@ globalButton.addEventListener('click', () => {
         dataset[country] = { score: score, fillColor: color }
     })
     createMap(dataset)
-    // legend
-    const colors = ["#FFD8B4", "#FFC48E", "#FFB169", "#FF9D43", "#C47833", "#9D6129"]
-    const colorBoxes = document.querySelectorAll('.colorbox')
-    colorBoxes.forEach((_colorbox, _key) => {
-        _colorbox.style.backgroundColor = colors[_key]
-    })
     redirection()
 })
 

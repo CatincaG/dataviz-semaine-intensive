@@ -21,7 +21,7 @@ curl_close($curl);
 
 <head>
     <meta charset="utf-8">
-    <title>Gender equality in Europe</title>
+    <title>Equally</title>
     <link rel="stylesheet" href="./src/styles/map.css">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -36,22 +36,20 @@ curl_close($curl);
         <li class="work-button">Work</li>
         <li class="health-button">Health</li>
         <li class="power-button">Power</li>
-        <li class="violence-button">Violence</li>
     </ul>
     <!-- Map -->
     <div id="map-container"></div>
     <!-- Legend -->
     <div class="legend">
-        <p>Bad</p>
+        <p>Inequality</p>
         <div class="colors">
             <div class="colorbox color1"></div>
             <div class="colorbox color2"></div>
             <div class="colorbox color3"></div>
             <div class="colorbox color4"></div>
             <div class="colorbox color5"></div>
-            <div class="colorbox color6"></div>
         </div>
-        <p>Excellent</p>
+        <p>Equality</p>
     </div>
     <!-- Source -->
     <p class="source">2017 datas from EUOpen Data</p>
