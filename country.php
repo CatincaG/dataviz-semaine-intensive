@@ -165,6 +165,16 @@
 
     // $violenceFirstYear = array_values($violenceYears)[0];
     // $violenceLastYear = end($violenceYears);
+
+    /*
+    *--------------
+    *
+    * Check if value is negative for work wage difference between women and men
+    *
+    *--------------
+    */
+
+    $negativeString = "-"
 ?>
 
 <!DOCTYPE html>
@@ -219,15 +229,15 @@
             ?>],
 
             datasets: [{
-                // Woman
-                label: 'Woman',
+                // Women
+                label: 'Women',
                 data: [<?php
                 foreach ($dataStudies as $dataItem): if($dataItem->sex === 'W') {
                     echo str_replace(',','.',$dataItem->value).',';
                 }
                 endforeach;
                 ?>],
-                backgroundColor: "rgba(246, 174, 45, 0.4)"
+                backgroundColor: "rgba(246, 174, 45, 0.4)",
                 }, {
 
                 // Men
@@ -240,7 +250,7 @@
                     }
                 endforeach;
                 ?>],
-                backgroundColor: "rgba(89, 65, 169, 1)"
+                backgroundColor: "rgba(89, 65, 169, 1)",
             }]
         },
 
@@ -284,7 +294,7 @@
     Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
     Chart.defaults.global.defaultFontColor = 'black'
     let chartDataWork = new Chart(chartWork, {
-    type: 'line',
+    type: 'bar',
 
         data: {
             // Years
@@ -295,11 +305,18 @@
             ?>],
 
             datasets: [{
-                // Woman
-                label: 'Woman',
+                // Women
+                label: 'Women',
                 data: [<?php
                 foreach ($dataWork as $_dataWork):
-                    echo str_replace(',','.',$_dataWork->value).',';
+                    if(strpos($_dataWork->value, $negativeString) !== false)
+                    {
+                        $commaToDot = str_replace(',','.',$_dataWork->value);
+                        echo str_replace('-', '+', $commaToDot).',';
+
+                    } else {
+                        echo "-".str_replace(',','.',$_dataWork->value).',';
+                    }
                 endforeach;
                 ?>],
                 backgroundColor: "rgba(169, 65, 127, 0.6)"
@@ -310,7 +327,7 @@
             legend: { display: true },
             title: {
                 display: true,
-                text: 'Wage difference between woman and men in <?= end($dataWork)->country?> from <?= $workFirstYear ?> to <?= $workLastYear ?>',
+                text: 'Wage difference between women and men in <?= end($dataWork)->country?> from <?= $workFirstYear ?> to <?= $workLastYear ?>',
                 fontSize: 14,
                 fontStyle: '500',
                 padding: 16
@@ -357,8 +374,8 @@
             ?>],
 
             datasets: [{
-                // Woman
-                label: 'Woman',
+                // Women
+                label: 'Women',
                 data: [<?php
                 foreach ($dataPower as $_dataPower):
                     if($_dataPower->sex === 'W' && $_dataPower->position === 'CEO (Chief Executive Officer)') {
@@ -434,8 +451,8 @@
             ?>],
 
             datasets: [{
-                // Woman
-                label: 'Woman',
+                // Women
+                label: 'Women',
                 data: [<?php
                 foreach ($dataHealth as $_dataHealth):
                     if($_dataHealth->sex === 'W' && $_dataHealth->info === 'Life expectancy in absolute value at birth') {
@@ -482,7 +499,7 @@
     *--------------
     * -->
     <!-- Display data-->
-    <div class="violence-content js-hidden">
+    <!-- <div class="violence-content js-hidden">
         <p class="description"> 
             In 
             <?php
@@ -506,22 +523,22 @@
         </p>
         <p class="description"> woman were raped in 2017</p>
         <p class ="missing-data">
-            <!-- <?php
+            <?php
                 if(empty($dataViolence))
                 {
                     echo('There is no data available for this country');
                 }
-            ?> -->
+            ?>
         </p>
-    </div>
+    </div> -->
     <!-- Illustration violence -->
     <img src="./assets/svg/illustrations/violence-woman.svg" class="violence-illustration js-hidden" alt="woman sitting illustration">
-    <!--Container of the doughnut-->
-    <div class="chart-container js-chart-violence js-hidden" style="position: relative; height:20vh; width:62vw">
+    <!-- Container of the doughnut -->
+    <!-- <div class="chart-container js-chart-violence js-hidden" style="position: relative; height:20vh; width:62vw">
         <canvas id="chart-data-violence" class="canvas-violence"></canvas>
-    </div>
+    </div> -->
     <!--Script for the chart-->
-    <script>
+    <!-- <script>
     const chartDoughnutViolence = document.getElementById('chart-data-violence').getContext('2d')
 
     Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
@@ -570,7 +587,7 @@
             }
         }
     })
-    </script>
+    </script> -->
     <!--End of the script for the chart-->
     <!--
     *--------------

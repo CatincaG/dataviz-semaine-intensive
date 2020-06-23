@@ -7,7 +7,9 @@
 body
 {
     font-family: 'Rubik', sans-serif;
-    background-color: #DED9EE;
+    background-image: url("../../assets/svg/background/studies-background.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 body, html
@@ -35,14 +37,12 @@ p.value
 {
     font-size: 80px;
     font-weight: 700;
-    color: #5941A9;
 }
 
 p.description
 {
     font-size: 24px;
     font-weight: 400;
-    color: #5941A9;
 }
 
 p.source-studies
@@ -85,11 +85,34 @@ p.source-health
     font-size: 12px;
 }
 
-p.missing-data
+.studies-content p.description, 
+.studies-content p.value 
 {
-    font-size: 24px;
-    font-weight: 400;
-    color: #4F4F4F;
+    color: #5941A9;
+}
+
+.work-content p.description, 
+.work-content p.value
+{
+    color: #A9417F;
+}
+
+.power-content p.description, 
+.power-content p.value
+{
+    color: #3E9FAC;
+}
+
+.health-content p.description, 
+.health-content p.value
+{
+    color: #41A95E;
+}
+
+.violence-content p.description, 
+.violence-content p.value
+{
+    color: #B43838;
 }
 
 /* Elements */
