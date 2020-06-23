@@ -53,29 +53,43 @@ h2{
     justify-content: center;
 }
 
+.title .selected-category{
+    font-weight: 500;
+    font-size: 2rem;
+    margin: 15px 10px;
+    padding: 5px 10px;
+    background-color:#D8ECEE;
+    cursor: pointer;
+}
+
 .categories{
-    display: flex;
-    flex-direction: column;
     position: relative;
 }
 
-.categories ul{
+.title .menu{
+    list-style: none;
     position: absolute;
-    top: 0;
-    left: 0;
+    top:60px;
+    left: 10px;
     margin: 0;
     padding: 0;
     z-index: 10;
     background-color: #D8ECEE;
+    cursor: pointer;
 }
 
-.categories li{
+.title .menu li{
     font-weight: 500;
     font-size: 2rem;
-    list-style: none;
+    margin: 0;
+    padding: 5px 10px;
 }
 
-.arrow{
-    height: 16px;
-    width: auto;
+.title .menu li:hover{
+    background-color: #9B8DCB;
+}
+
+.hidden{
+    opacity: 0;
+    pointer-events: none;
 }
