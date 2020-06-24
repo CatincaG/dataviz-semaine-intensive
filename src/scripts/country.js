@@ -11,7 +11,7 @@ class Country
         this.violenceDomain = document.querySelector('.violence-content')
 
         // Get illustrations for each category
-        this.studiesIllustration = document.querySelector('div.container-studies-illustration')
+        this.studiesIllustration = document.querySelector('img.studies-illustration')
         this.workIllustration = document.querySelector('img.work-illustration')
         this.violenceIllustration = document.querySelector('img.violence-illustration')
         this.powerIllustration = document.querySelector('img.power-illustration')
@@ -23,12 +23,6 @@ class Country
         this.chartPower = document.querySelector('div.js-chart-power')
         this.chartHealth = document.querySelector('div.js-chart-health')
         this.chartViolence = document.querySelector('div.js-chart-violence')
-
-        // Get sources for each category
-        this.sourceStudies = document.querySelector('p.source-studies')
-        this.sourceWork = document.querySelector('p.source-work')
-        this.sourceHealth = document.querySelector('p.source-health')
-        this.sourcePower = document.querySelector('p.source-power')
 
         // Get background URL
         this.backgroundImagePath = "../../assets/svg/background/"
@@ -72,11 +66,6 @@ class Country
                     this.chartPower.classList.add('js-hidden')
                     this.chartHealth.classList.add('js-hidden')
                     this.chartViolence.classList.add('js-hidden')
-
-                    this.sourceStudies.classList.remove('js-hidden')
-                    this.sourceWork.classList.add('js-hidden')
-                    this.sourceHealth.classList.add('js-hidden')
-                    this.sourcePower.classList.add('js-hidden')
                 } 
                 else if(_button.classList.contains('work-button') && this.workDomain.classList.contains('js-hidden'))
                 {
@@ -97,11 +86,6 @@ class Country
                     this.chartPower.classList.add('js-hidden')
                     this.chartHealth.classList.add('js-hidden')
                     this.chartViolence.classList.add('js-hidden')
-
-                    this.sourceStudies.classList.add('js-hidden')
-                    this.sourceWork.classList.remove('js-hidden')
-                    this.sourceHealth.classList.add('js-hidden')
-                    this.sourcePower.classList.add('js-hidden')
                 } 
                 else if(_button.classList.contains('power-button') && this.powerDomain.classList.contains('js-hidden'))
                 {
@@ -122,11 +106,6 @@ class Country
                     this.chartPower.classList.remove('js-hidden')
                     this.chartHealth.classList.add('js-hidden')
                     this.chartViolence.classList.add('js-hidden')
-
-                    this.sourceStudies.classList.add('js-hidden')
-                    this.sourceWork.classList.add('js-hidden')
-                    this.sourceHealth.classList.add('js-hidden')
-                    this.sourcePower.classList.remove('js-hidden')
                 }
                 else if(_button.classList.contains('health-button') && this.healthDomain.classList.contains('js-hidden'))
                 {
@@ -147,11 +126,6 @@ class Country
                     this.chartPower.classList.add('js-hidden')
                     this.chartHealth.classList.remove('js-hidden')
                     this.chartViolence.classList.add('js-hidden')
-
-                    this.sourceStudies.classList.add('js-hidden')
-                    this.sourceWork.classList.add('js-hidden')
-                    this.sourceHealth.classList.remove('js-hidden')
-                    this.sourcePower.classList.add('js-hidden')
                 }
                 else if(_button.classList.contains('violence-button') && this.violenceDomain.classList.contains('js-hidden'))
                 {
@@ -172,11 +146,6 @@ class Country
                     this.chartPower.classList.add('js-hidden')
                     this.chartHealth.classList.add('js-hidden')
                     this.chartViolence.classList.remove('js-hidden')
-
-                    this.sourceStudies.classList.add('js-hidden')
-                    this.sourceWork.classList.add('js-hidden')
-                    this.sourceHealth.classList.add('js-hidden')
-                    this.sourcePower.classList.add('js-hidden')
                 }
             })
         })

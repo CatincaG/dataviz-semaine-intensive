@@ -10,6 +10,7 @@ body
     background-image: url("../../assets/svg/background/studies-background.svg");
     background-repeat: no-repeat;
     background-size: 100%;
+    color: #4F4F4F;
 }
 
 body, html
@@ -20,9 +21,9 @@ body, html
 
 /* Text */
 
-h3
+h2
 {
-    margin: 24px;
+    margin: 32px;
     text-align: right;
 }
 
@@ -30,7 +31,13 @@ a
 {
     font-size: 14px;
     text-decoration: none;
-    color: rgb(15, 15, 15);
+    color: #4F4F4F;
+}
+
+.button-back a
+{
+    font-size: 16px;
+    margin-left: 12px;
 }
 
 p.value
@@ -45,44 +52,13 @@ p.description
     font-weight: 400;
 }
 
-p.source-studies
+p.missing-data
 {
-    position: absolute;
-    left: 36vw;
-    bottom: 3vw;
-    margin: 0;
+    font-size: 24px;
     font-weight: 500;
-    font-size: 12px;
-}
-
-p.source-work
-{
-    position: absolute;
-    right: 26vw;
-    top: 36vw;
-    margin: 0;
-    font-weight: 500;
-    font-size: 12px;
-}
-
-p.source-power
-{
-    position: absolute;
-    right: 23vw;
-    bottom: 5vw;
-    margin: 0;
-    font-weight: 500;
-    font-size: 12px;
-}
-
-p.source-health
-{
-    position: absolute;
-    right: 16vw;
-    bottom: 6vw;
-    margin: 0;
-    font-weight: 500;
-    font-size: 12px;
+    margin-top: 120px;
+    text-align: center;
+    color: #B43838;
 }
 
 .studies-content p.description, 
@@ -117,38 +93,33 @@ p.source-health
 
 /* Elements */
 
+.button-back
+{
+    position: absolute;
+    display: flex;
+    top: 2vw;
+    left: 2vw; 
+    align-items: center;
+}
+
 .studies-content
 {
     position: absolute;
     top: 4vw;
-    right: 35vw;
-}
-
-.container-studies-illustration
-{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-.stage-rectangle
-{
-    width: 16vw;
-    height: 8vw;
-    background-color: #DDB947;
+    right: 34vw;
 }
 
 .work-content
 {
     position: absolute;
     top: 8vw;
-    left: 7vw;
+    left: 6vw;
 }
 
 .power-content
 {
     position: absolute;
-    top: 8vw;
+    top: 4vw;
     left: 8vw;
 }
 
@@ -162,7 +133,7 @@ p.source-health
 .violence-content
 {
     position: absolute;
-    top: 4vw;
+    top: 2vw;
     left: 16vw;
 }
 
@@ -180,14 +151,19 @@ p.source-health
     margin: 16px;
 }
 
+.back-arrow
+{
+    width: 4vw;
+}
+
 /* illustrations */
 img.studies-illustration
 {
     position: absolute;
-    left: -6vw;
-    bottom: 8vw;
-    width: 40vw;
-    height: 40vw;
+    bottom: 0;
+    left: -10vw;
+    width: 44vw;
+    height: 44vw;
 }
 
 img.work-illustration
@@ -211,10 +187,10 @@ img.violence-illustration
 img.health-illustration
 {
     position: absolute;
-    left: 4vw;
-    bottom: 9vw;
-    width: 24vw;
-    height: 24vw;
+    left: 3vw;
+    bottom: 6vw;
+    width: 22vw;
+    height: 22vw;
 }
 
 img.power-illustration
@@ -222,6 +198,8 @@ img.power-illustration
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* chart */
@@ -233,7 +211,7 @@ canvas
 .canvas-studies
 {
     left: 26vw;
-    top: 9vw;
+    top: 11vw;
 }
 
 .canvas-work
@@ -244,14 +222,14 @@ canvas
 
 .canvas-power
 {
-    left: 24vw;
-    bottom: -8vw;
+    right: -25vw;
+    bottom: -10vw;
 }
 
 .canvas-health
 {
-    right: -30vw;
-    bottom: 3vw;
+    right: -29vw;
+    bottom: 0vw;
 }
 
 .canvas-violence
@@ -266,6 +244,7 @@ canvas
 {
     pointer-events: none;
     opacity: 0;
+    transition: all 0.3s;
 }
 
 .domains a.js-current-button
