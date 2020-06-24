@@ -21,6 +21,8 @@ curl_close($curl);
 <link rel="stylesheet" href="./src/styles/map.css">
 
 <!-- Page-->
+    <!-- Logo -->
+    <a href="index.php"><img class="logo" src="./assets/img/logo.png" alt="Equally"></a>
     <!-- Title -->
     <div class="title">
         <h1>Gender equality in Europe for</h1>
