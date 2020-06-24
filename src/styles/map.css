@@ -45,6 +45,8 @@ h2{
     position: absolute;
     bottom: 5%;
     left: 10%;
+    text-decoration: none;
+    color: #333333;
 }
 
 .title{
@@ -54,12 +56,24 @@ h2{
 }
 
 .title .selected-category{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     font-weight: 500;
     font-size: 2rem;
     margin: 15px 10px;
     padding: 5px 10px;
     background-color:#D8ECEE;
     cursor: pointer;
+}
+
+.selected-category-text{
+    margin:0;
+    padding:0;
+}
+
+.selected-category svg{
+    padding-left: 8px;
 }
 
 .categories{

@@ -33,7 +33,7 @@ curl_close($curl);
         <!-- Category choice -->
         <div class="categories">
             <div class="selected-category">
-                all categories
+                <p class="selected-category-text">all categories</p>
                 <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.0837 12.4236C8.04423 12.484 7.95577 12.484 7.9163 12.4236L0.101155 0.469906C0.0576717 0.403396 0.105391 0.315185 0.184855 0.315185L15.8151 0.315186C15.8946 0.315186 15.9423 0.403396 15.8988 0.469907L8.0837 12.4236Z" fill="#333333"/>
                 </svg>
@@ -60,7 +60,7 @@ curl_close($curl);
         <p>Equality</p>
     </div>
     <!-- Source -->
-    <p class="source">2017 datas from EUOpen Data</p>
+    <a class="source" href="https://data.europa.eu/euodp/en/data/dataset/gender-equality-index">2017 datas from EUOpen Data</a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>

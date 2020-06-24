@@ -13,6 +13,8 @@ categoryChoice.addEventListener('click', () => {
 const datajson = JSON.parse(data)
 const dataset = {}
 
+
+
 // Creating a map
 const createMap = (_dataset) => {
     const map = new Datamap({
@@ -23,9 +25,10 @@ const createMap = (_dataset) => {
         },
         // datas
         data: _dataset,
-        // hover infos
+        // hover
         geographyConfig: {
-            highlightBorderColor: '#FFEE90',
+            highlightFillColor: '#FFFFFF',
+            highlightBorderColor: '#FFFFFF',
             popupTemplate: function (geography, data) {
                 return '<div class="hoverinfo">' + geography.properties.name + '<br><strong>' + data.score + '</strong><br>' + "Click to learn more" + '</div>'
             }
@@ -43,15 +46,23 @@ const createMap = (_dataset) => {
     })
 }
 
+// Send to the country page on click
 const redirection = () => {
-    // Send to the country page on click
+    // get the countries we have datas on
+    const authorizedCountries = []
+    datajson.forEach((_country) => {
+        authorizedCountries.push(_country.country)
+    })
     // get country path
     const getPath = document.querySelectorAll('#map-container svg g path')
     // click on the country
     getPath.forEach((_path) => {
         _path.addEventListener('click', () => {
             const idCountry = _path.classList[1]
-            window.location.href = `country.php?id=${idCountry}`
+            // redirection only if we have datas
+            if (authorizedCountries.indexOf(idCountry) != -1) {
+                window.location.href = `country.php?id=${idCountry}`
+            }
         })
     })
 }
@@ -60,7 +71,7 @@ const redirection = () => {
 // Colors
 const paletteScale = d3.scale.linear()
     .domain([10, 65, 100])
-    .range(["#B43107", "#E4B63E", "#4B9339"])
+    .range(["#2E2256", "#5941A9", "#DED9EE"])
 
 
 // Set database for the global map at first
@@ -69,7 +80,7 @@ datajson.forEach((_country) => {
     _country.global_score = parseFloat(_country.global_score)
     const score = _country.global_score
     const color = paletteScale(score)
-    dataset[country] = { score: score, fillColor: color }
+    dataset[country] = { score: score, fillColor: color, highlightFillColor: '#FFAB84', highlightBorderColor: '#FFEE90' }
 })
 createMap(dataset)
 redirection()
@@ -89,10 +100,13 @@ educationButton.addEventListener('click', () => {
         _country.studies_score = parseFloat(_country.studies_score)
         const score = _country.studies_score
         const color = paletteScale(score)
-        dataset[country] = { score: score, fillColor: color }
+        dataset[country] = { score: score, fillColor: color, highlightFillColor: '#FFAB84', highlightBorderColor: '#FFEE90' }
     })
     createMap(dataset)
     redirection()
+    // display categorie
+    const categorySelected = document.querySelector('.selected-category-text')
+    categorySelected.innerText = 'education'
 })
 
 // WORK
@@ -109,10 +123,13 @@ workButton.addEventListener('click', () => {
         _country.work_score = parseFloat(_country.work_score)
         const score = _country.work_score
         const color = paletteScale(score)
-        dataset[country] = { score: score, fillColor: color }
+        dataset[country] = { score: score, fillColor: color, highlightFillColor: '#FFAB84', highlightBorderColor: '#FFEE90' }
     })
     createMap(dataset)
     redirection()
+    // display categorie
+    const categorySelected = document.querySelector('.selected-category-text')
+    categorySelected.innerText = 'work'
 })
 
 // HEALTH
@@ -129,10 +146,13 @@ healthButton.addEventListener('click', () => {
         _country.health_score = parseFloat(_country.health_score)
         const score = _country.health_score
         const color = paletteScale(score)
-        dataset[country] = { score: score, fillColor: color }
+        dataset[country] = { score: score, fillColor: color, highlightFillColor: '#FFAB84', highlightBorderColor: '#FFEE90' }
     })
     createMap(dataset)
     redirection()
+    // display categorie
+    const categorySelected = document.querySelector('.selected-category-text')
+    categorySelected.innerText = 'health'
 })
 
 // POWER
@@ -149,10 +169,13 @@ powerButton.addEventListener('click', () => {
         _country.power_score = parseFloat(_country.power_score)
         const score = _country.power_score
         const color = paletteScale(score)
-        dataset[country] = { score: score, fillColor: color }
+        dataset[country] = { score: score, fillColor: color, highlightFillColor: '#FFAB84', highlightBorderColor: '#FFEE90' }
     })
     createMap(dataset)
     redirection()
+    // display categorie
+    const categorySelected = document.querySelector('.selected-category-text')
+    categorySelected.innerText = 'responsability'
 })
 
 
@@ -170,10 +193,13 @@ globalButton.addEventListener('click', () => {
         _country.global_score = parseFloat(_country.global_score)
         const score = _country.global_score
         const color = paletteScale(score)
-        dataset[country] = { score: score, fillColor: color }
+        dataset[country] = { score: score, fillColor: color, highlightFillColor: '#FFAB84', highlightBorderColor: '#FFEE90' }
     })
     createMap(dataset)
     redirection()
+    // display categorie
+    const categorySelected = document.querySelector('.selected-category-text')
+    categorySelected.innerText = 'all categories'
 })
 
 
