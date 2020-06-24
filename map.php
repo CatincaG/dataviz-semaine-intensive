@@ -1,5 +1,7 @@
 <?php
+// includes
 include_once './includes/config.php';
+include './includes/header.php';
 
 //****GET API DATAS WITH CURL METHOD***//
 // Instantiate curl
@@ -15,20 +17,10 @@ curl_close($curl);
     const data = <?= json_encode($data); ?>
 </script>
 
-<!-- DOM -->
-<!DOCTYPE html>
-<html>
+<!-- Style link -->
+<link rel="stylesheet" href="./src/styles/map.css">
 
-<head>
-    <meta charset="utf-8">
-    <title>Equally</title>
-    <link rel="stylesheet" href="./src/styles/map.css">
-    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/png">
-    <link rel="icon" href="./assets/img/favicon.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
+<!-- Page-->
     <!-- Title -->
     <div class="title">
         <h1>Gender equality in Europe for</h1>
@@ -68,5 +60,7 @@ curl_close($curl);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.9/datamaps.all.min.js"></script>
     <script src="src/scripts/map.js"></script>
-</body>
-</html>
+
+<!-- Footer -->
+<?php
+include './includes/footer.php';

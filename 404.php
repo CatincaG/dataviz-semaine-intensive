@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+// Header
+include './includes/header.php';
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error 404</title>
+    <!-- Links -->
     <link rel="stylesheet" href="./src/styles/404.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-</head>
 
-<body>
+    <!-- Page -->
     <div class="text">
         <h1>You’re actually lost,</h1>
         <h2>but don’t worry you can <a href="https://www.qwanturank.life">go back</a></h2>
@@ -17,6 +14,7 @@
     <div class="image">
         <img src="./assets/svg/illustrations/404.svg" alt="404">
     </div>
-</body>
 
-</html>
+<!-- Footer -->
+<?php
+include './includes/footer.php';
