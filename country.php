@@ -682,6 +682,7 @@
                 <p class="missing-data general-error">Sorry,</p>
                 <p class="missing-data-explanation general-error">there is no data available for this country</p>
             </div>
+            <img src="./assets/svg/illustrations/studies-all-content.svg" class="studies-illustration" alt="graduated girl illustration">
         <?php } ?>
     <!-- Error if there is no id in the URL -->
     <?php } else { ?>
@@ -689,6 +690,7 @@
             <p class="missing-data general-error">Sorry,</p>
             <p class="missing-data-explanation general-error">there is no data available</p>
         </div>
+        <img src="./assets/svg/illustrations/studies-all-content.svg" class="studies-illustration" alt="graduated girl illustration">
     <?php } ?>
     <script src="./src/scripts/country.js"></script>
 
