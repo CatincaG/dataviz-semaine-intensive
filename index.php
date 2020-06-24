@@ -11,7 +11,8 @@
 </head>
 <body>
     <img src="./assets/svg/illustrations/eu-stars.svg" alt="European Union stars" class="eu-stars">
-    <img src="./assets/svg/illustrations/first-page-all-content.svg" alt="Woman and man" class="woman-man">
+    <img src="./assets/svg/illustrations/first-page-man.svg" alt="man" class="person man">
+    <img src="./assets/svg/illustrations/first-page-woman.svg" alt="woman" class="person woman">
     <main class="first-page-container">
         <h1>Equally</h1>
         <div class="project-description">

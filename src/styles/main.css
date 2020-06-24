@@ -23,14 +23,14 @@ body, html
 
 .eu-stars
 {
-    width: 635px;
-    height: 635px;
+    width: 90vw;
+    height: 90vh;
     position: absolute;
     top: 6%;
     z-index: -10;
 }
 
-.woman-man
+.person
 {
     width: auto;
     height: auto;
@@ -38,13 +38,33 @@ body, html
     z-index: -9;
 }
 
+.man{
+    top: 5%;
+    right: 5%;
+}
+
+.woman{
+    bottom: 5%;
+    left: 5%;
+}
+
+@media screen and (max-width: 1400px) {
+    .man{
+        top: 3%;
+        right: 0;
+    }
+    
+    .woman{
+        bottom: 3%;
+        left: 2%;
+  }
+}
+
 .first-page-container
 {
-    width: 735px;
-    height: auto;
-    position: absolute;
-    top: 25%;
+    width: 50%;
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
