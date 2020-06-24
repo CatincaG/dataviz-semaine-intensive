@@ -37,7 +37,11 @@ a
 .button-back a
 {
     font-size: 16px;
-    margin-left: 12px;
+}
+
+a.studies-button
+{
+    color: #5941A9;
 }
 
 p.value
@@ -54,11 +58,33 @@ p.description
 
 p.missing-data
 {
-    font-size: 24px;
+    font-size: 62px;
     font-weight: 500;
-    margin-top: 120px;
-    text-align: center;
+}
+
+p.missing-data-explanation
+{
+    font-size: 24px;
+}
+
+p.missing-data.violence-error
+{
     color: #B43838;
+}
+
+p.missing-data-explanation.violence-error
+{
+    color: #B43838;
+}
+
+p.missing-data.general-error
+{
+    color: #5941A9;
+}
+
+p.missing-data-explanation.general-error
+{
+    color: #5941A9;
 }
 
 .studies-content p.description, 
@@ -137,16 +163,17 @@ p.missing-data
     right: 16vw;
 }
 
-.domains
+.categories
 {
-    display: flex;
     position: absolute;
-    right: 0;
-    top: 120px;
+    display: flex;
     flex-direction: column;
+    align-items: flex-end;
+    right: -2px;
+    top: 120px;
 }
 
-.domains a
+.categories a
 {
     margin: 16px;
 }
@@ -154,9 +181,54 @@ p.missing-data
 .back-arrow
 {
     width: 4vw;
+    margin-right: 12px;
+}
+
+.container-button
+{
+    display: flex;
+    align-items: center;
+}
+
+.rectangle-button
+{
+    width: 62px;
+    height: 4px;
+    background-color: #4F4F4F;
+    border-radius: 12px;
+}
+
+.rectangle-button.js-current-rectangle
+{
+    background-color: #5941A9;
+}
+
+.error-message
+{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.error-message.studies-position-error
+{
+    left: -64vw;
+    top: 4vw;
+}
+
+.error-message.general-error-position
+{
+    left: 24vw;
+    top: 12vw;
 }
 
 /* illustrations */
+img
+{
+    pointer-events: none;
+}
+
 img.studies-illustration
 {
     position: absolute;
@@ -247,8 +319,8 @@ canvas
     transition: all 0.3s;
 }
 
-.domains a.js-current-button
+.categories a.js-current-button
 {
     font-size: 16px;
-    color: #5941A9;
+    /* color: #5941A9; */
 }

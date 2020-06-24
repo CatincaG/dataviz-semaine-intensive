@@ -3,7 +3,8 @@ class Country
     constructor()
     {
         // Get the 5 categories
-        this.domainsButton = document.querySelectorAll('a')
+        this.domainsButton = document.querySelectorAll('.categories a')
+        console.log(this.domainsButton)
         this.studiesDomain = document.querySelector('.studies-content')
         this.workDomain = document.querySelector('.work-content')
         this.powerDomain = document.querySelector('.power-content')
@@ -27,9 +28,12 @@ class Country
         // Get background URL
         this.backgroundImagePath = "../../assets/svg/background/"
 
+        // Get button categories
+
         // Set functions
         this.setCurrentCategory()
         this.changeBackgroundColor()
+        this.changeButtonColor()
     }
 
     setCurrentCategory()
@@ -38,13 +42,6 @@ class Country
         {
             _button.addEventListener('click', () => 
             {
-                /** Set current button */
-                // Change the state of the current button
-                const initialButton = document.querySelector('a.js-current-button')
-                initialButton.classList.remove('js-current-button')
-
-                // Change the state of the button clicked by the user
-                _button.classList.add('js-current-button')
 
                 /** Display right elements according to the category selected */
                 if(_button.classList.contains('studies-button') && this.studiesDomain.classList.contains('js-hidden'))
@@ -179,6 +176,58 @@ class Country
 
         })
 
+    }
+
+    changeButtonColor()
+    {
+
+        const rectangleButton = document.querySelectorAll('rectangle-button')
+
+        this.domainsButton.forEach((_button) =>
+        {
+            _button.addEventListener('click', () => 
+            {
+                /** Set current button */
+                // Change the state of the current button
+                const initialButton = document.querySelector('a.js-current-button')
+                initialButton.classList.remove('js-current-button')
+                initialButton.style.color = '#4F4F4F'
+                initialButton.style.transition = 'all 0.3s'
+
+                // Change the state of the button clicked by the user
+                _button.classList.add('js-current-button')
+
+                // Change color according to the category
+                if(_button.classList.contains('studies-button') && _button.classList.contains('js-current-button'))
+                {
+                    _button.style.color = '#5941A9'
+
+                }
+
+                if(_button.classList.contains('work-button') && _button.classList.contains('js-current-button'))
+                {
+                    _button.style.color = '#A9417F'
+
+                }
+                
+                if (_button.classList.contains('power-button') && _button.classList.contains('js-current-button')) 
+                {
+                    _button.style.color = '#3E9FAC'
+
+                }
+
+                if (_button.classList.contains('health-button') && _button.classList.contains('js-current-button')) 
+                {
+                    _button.style.color = '#41A95E'
+                }
+                
+                if (_button.classList.contains('violence-button') && _button.classList.contains('js-current-button')) 
+                {
+                    _button.style.color = '#B43838'
+                }
+            })
+
+        })
     }
 }
 
