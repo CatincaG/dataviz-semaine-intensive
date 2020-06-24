@@ -64,11 +64,13 @@ h2{
     padding: 5px 10px;
     background-color:#D8ECEE;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .selected-category-text{
     margin:0;
     padding:0;
+    color: #5941A9;
 }
 
 .selected-category svg{
@@ -88,18 +90,21 @@ h2{
     padding: 0;
     z-index: 10;
     background-color: #D8ECEE;
+    color: #5941A9;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .title .menu li{
-    font-weight: 500;
+    font-weight: 400;
     font-size: 2rem;
     margin: 0;
     padding: 5px 10px;
 }
 
 .title .menu li:hover{
-    background-color: #9B8DCB;
+    background-color: #DED9EE;
+    border-radius: 5px;
 }
 
 .hidden{
