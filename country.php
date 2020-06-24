@@ -264,7 +264,7 @@
                 const ctx = document.getElementById('myChart').getContext('2d')
 
                 Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
-                Chart.defaults.global.defaultFontColor = 'black'
+                Chart.defaults.global.defaultFontColor = '#4F4F4F'
                 let myChart = new Chart(ctx, {
                 type: 'line',
 
@@ -307,7 +307,7 @@
                         title: {
                             display: true,
                             text: 'Percentage of women and men students in <?= end($dataStudies)->country?> from <?= $firstYear ?> to <?= $lastYear ?>',
-                            fontSize: 14,
+                            fontSize: 16,
                             fontStyle: '500',
                             padding: 16
                         }
@@ -346,7 +346,7 @@
                 const chartWork = document.getElementById('chart-data-work').getContext('2d')
 
                 Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
-                Chart.defaults.global.defaultFontColor = 'black'
+                Chart.defaults.global.defaultFontColor = '#4F4F4F'
                 let chartDataWork = new Chart(chartWork, {
                 type: 'bar',
 
@@ -382,7 +382,7 @@
                         title: {
                             display: true,
                             text: 'Wage difference between women and men in <?= end($dataWork)->country?> from <?= $workFirstYear ?> to <?= $workLastYear ?>',
-                            fontSize: 14,
+                            fontSize: 16,
                             fontStyle: '500',
                             padding: 16
                         }
@@ -421,7 +421,7 @@
                 const chartPower = document.getElementById('chart-data-power').getContext('2d')
 
                 Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
-                Chart.defaults.global.defaultFontColor = 'black'
+                Chart.defaults.global.defaultFontColor = '#4F4F4F'
                 let chartDataPower = new Chart(chartPower, {
                 type: 'bar',
 
@@ -465,7 +465,7 @@
                         title: {
                             display: true,
                             text: 'Percentage of women and men who have the position of CEO in <?= end($currentDataPower)->country?> from <?= $powerFirstYear ?> to <?= $powerLastYear ?>',
-                            fontSize: 14,
+                            fontSize: 16,
                             fontStyle: '500',
                             padding: 16
                         }
@@ -485,7 +485,7 @@
             <div class="health-content js-hidden">
                 <?php if (!empty($currentDataHealth)) {?>
                     <p class="description">Life expectancy for women was</p>
-                    <p class="value"><?= intval(end($currentDataHealth)->value).' '.'years old' ?></p>
+                    <p class="value"><?= intval(end($currentDataHealth)->value).' '.'years' ?></p>
                     <p class="description">in <?= end($currentDataHealth)->year ?></p>
                 <!-- Error if the country doesn't exist in the category -->
                 <?php } else { ?>
@@ -504,7 +504,7 @@
                 const chartHealth = document.getElementById('chart-data-health').getContext('2d')
 
                 Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
-                Chart.defaults.global.defaultFontColor = 'black'
+                Chart.defaults.global.defaultFontColor = '#4F4F4F'
                 let chartDataHealth = new Chart(chartHealth, {
                 type: 'bar',
 
@@ -548,7 +548,7 @@
                         title: {
                             display: true,
                             text: 'Life expectancy in absolute value at birth for women and men in <?= end($currentDataHealth)->country?> from <?= $healthFirstYear ?>  to <?= $healthLastYear ?>',
-                            fontSize: 14,
+                            fontSize: 16,
                             fontStyle: '500',
                             padding: 16
                         }
@@ -587,7 +587,7 @@
                 const chartDoughnutViolence = document.getElementById('chart-data-violence').getContext('2d')
 
                 Chart.defaults.global.defaultFontFamily = "'Rubik', 'Arial', sans-serif"
-                Chart.defaults.global.defaultFontColor = 'black'
+                Chart.defaults.global.defaultFontColor = '#4F4F4F'
 
                 let chartDataViolence = new Chart(chartDoughnutViolence, {
                 type: 'bar',
@@ -632,7 +632,7 @@
                         title: {
                             display: true,
                             text: 'Number of women and men victim of rape in <?= end($currentDataViolenceWoman)->country ?> , from <?= $violenceFirstYear ?> to <?= $violenceLastYear ?>',
-                            fontSize: 14,
+                            fontSize: 16,
                             fontStyle: '500',
                             padding: 16
                         },

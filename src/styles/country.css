@@ -119,22 +119,22 @@ p.missing-data
 .power-content
 {
     position: absolute;
-    top: 4vw;
+    top: 8vw;
     left: 8vw;
 }
 
 .health-content
 {
     position: absolute;
-    top: 4vw;
+    top: 8vw;
     left: 4vw;
 }
 
 .violence-content
 {
     position: absolute;
-    top: 2vw;
-    left: 16vw;
+    top: 4vw;
+    right: 16vw;
 }
 
 .domains
@@ -235,7 +235,7 @@ canvas
 .canvas-violence
 {
     right: -2vw;
-    bottom: 8vw;
+    bottom: 14vw;
 }
 
 /* js elements */
