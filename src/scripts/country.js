@@ -28,12 +28,17 @@ class Country
         // Get background URL
         this.backgroundImagePath = "../../assets/svg/background/"
 
-        // Get button categories
+        // Rectangle
+        this.rectangleStudies = document.querySelector('.rectangle-button.js-studies-rectangle')
+        console.log(this.rectangleStudies)
+        this.rectangleWork = document.querySelector('.rectangle-button.js-work-rectangle')
+        this.rectanglePower = document.querySelector('.rectangle-button.js-power-rectangle')
+        this.rectangleHealth = document.querySelector('.rectangle-button.js-health-rectangle')
+        this.rectangleViolence = document.querySelector('.rectangle-button.js-violence-rectangle')
 
         // Set functions
         this.setCurrentCategory()
         this.changeBackgroundColor()
-        this.changeButtonColor()
     }
 
     setCurrentCategory()
@@ -42,6 +47,21 @@ class Country
         {
             _button.addEventListener('click', () => 
             {
+                /** Set current button */
+                // Change the state of the current button
+                const initialButton = document.querySelector('a.js-current-button')
+                initialButton.classList.remove('js-current-button')
+                initialButton.style.color = '#4F4F4F'
+                initialButton.style.transition = 'all 0.3s'
+
+                this.rectangleStudies.style.backgroundColor = '#4F4F4F' 
+                this.rectangleWork.style.backgroundColor = '#4F4F4F'
+                this.rectanglePower.style.backgroundColor = '#4F4F4F' 
+                this.rectangleHealth.style.backgroundColor = '#4F4F4F'
+                this.rectangleViolence.style.backgroundColor = '#4F4F4F'
+
+                // Change the state of the button clicked by the user
+                _button.classList.add('js-current-button')
 
                 /** Display right elements according to the category selected */
                 if(_button.classList.contains('studies-button') && this.studiesDomain.classList.contains('js-hidden'))
@@ -63,6 +83,9 @@ class Country
                     this.chartPower.classList.add('js-hidden')
                     this.chartHealth.classList.add('js-hidden')
                     this.chartViolence.classList.add('js-hidden')
+
+                    _button.style.color = '#5941A9'
+                    this.rectangleStudies.style.backgroundColor = '#5941A9'
                 } 
                 else if(_button.classList.contains('work-button') && this.workDomain.classList.contains('js-hidden'))
                 {
@@ -83,6 +106,9 @@ class Country
                     this.chartPower.classList.add('js-hidden')
                     this.chartHealth.classList.add('js-hidden')
                     this.chartViolence.classList.add('js-hidden')
+
+                    _button.style.color = '#A9417F'
+                    this.rectangleWork.style.backgroundColor = '#A9417F'
                 } 
                 else if(_button.classList.contains('power-button') && this.powerDomain.classList.contains('js-hidden'))
                 {
@@ -103,6 +129,9 @@ class Country
                     this.chartPower.classList.remove('js-hidden')
                     this.chartHealth.classList.add('js-hidden')
                     this.chartViolence.classList.add('js-hidden')
+
+                    _button.style.color = '#3E9FAC'
+                    this.rectanglePower.style.backgroundColor = '#3E9FAC'
                 }
                 else if(_button.classList.contains('health-button') && this.healthDomain.classList.contains('js-hidden'))
                 {
@@ -123,6 +152,9 @@ class Country
                     this.chartPower.classList.add('js-hidden')
                     this.chartHealth.classList.remove('js-hidden')
                     this.chartViolence.classList.add('js-hidden')
+
+                    _button.style.color = '#41A95E'
+                    this.rectangleHealth.style.backgroundColor = '#41A95E'
                 }
                 else if(_button.classList.contains('violence-button') && this.violenceDomain.classList.contains('js-hidden'))
                 {
@@ -143,6 +175,9 @@ class Country
                     this.chartPower.classList.add('js-hidden')
                     this.chartHealth.classList.add('js-hidden')
                     this.chartViolence.classList.remove('js-hidden')
+
+                    _button.style.color = '#B43838'
+                    this.rectangleViolence.style.backgroundColor = '#B43838'
                 }
             })
         })
@@ -176,58 +211,6 @@ class Country
 
         })
 
-    }
-
-    changeButtonColor()
-    {
-
-        const rectangleButton = document.querySelectorAll('rectangle-button')
-
-        this.domainsButton.forEach((_button) =>
-        {
-            _button.addEventListener('click', () => 
-            {
-                /** Set current button */
-                // Change the state of the current button
-                const initialButton = document.querySelector('a.js-current-button')
-                initialButton.classList.remove('js-current-button')
-                initialButton.style.color = '#4F4F4F'
-                initialButton.style.transition = 'all 0.3s'
-
-                // Change the state of the button clicked by the user
-                _button.classList.add('js-current-button')
-
-                // Change color according to the category
-                if(_button.classList.contains('studies-button') && _button.classList.contains('js-current-button'))
-                {
-                    _button.style.color = '#5941A9'
-
-                }
-
-                if(_button.classList.contains('work-button') && _button.classList.contains('js-current-button'))
-                {
-                    _button.style.color = '#A9417F'
-
-                }
-                
-                if (_button.classList.contains('power-button') && _button.classList.contains('js-current-button')) 
-                {
-                    _button.style.color = '#3E9FAC'
-
-                }
-
-                if (_button.classList.contains('health-button') && _button.classList.contains('js-current-button')) 
-                {
-                    _button.style.color = '#41A95E'
-                }
-                
-                if (_button.classList.contains('violence-button') && _button.classList.contains('js-current-button')) 
-                {
-                    _button.style.color = '#B43838'
-                }
-            })
-
-        })
     }
 }
 

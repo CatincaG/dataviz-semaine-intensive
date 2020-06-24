@@ -1,5 +1,7 @@
 <?php
+    //includes
     include_once './includes/config.php';
+    include './includes/header.php';
 
     // Get the id of the country
     $id = $_GET['id'];
@@ -216,17 +218,11 @@
     $negativeString = "-"
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equally</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="./src/styles/country.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-</head>
-<body>
+<!-- Header links -->
+<link rel="stylesheet" href="./src/styles/country.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<!-- Body -->
     <div class="button-back">
         <a href="./map.php"><img src="./assets/svg/icons/back-button-arrow.svg" class="back-arrow" alt="back arrow">BACK</a>
     </div>
@@ -661,23 +657,23 @@
             <div class="categories">
                 <div class="container-button">
                     <a href="#" class="studies-button  js-current-button">EDUCATION</a>
-                    <div class="rectangle-button js-current-rectangle"></div>
+                    <div class="rectangle-button js-studies-rectangle"></div>
                 </div>
                 <div class="container-button">
                     <a href="#" class="work-button">WORK</a>
-                    <div class="rectangle-button"></div>
+                    <div class="rectangle-button js-work-rectangle"></div>
                 </div>
                 <div class="container-button">
                     <a href="#" class="power-button">RESPONSABILITY</a>
-                    <div class="rectangle-button"></div>
+                    <div class="rectangle-button js-power-rectangle"></div>
                 </div>
                 <div class="container-button">
                     <a href="#" class="health-button">HEALTH</a>
-                    <div class="rectangle-button"></div>
+                    <div class="rectangle-button js-health-rectangle"></div>
                 </div>
                 <div class="container-button">
                     <a href="#" class="violence-button">VIOLENCE</a>
-                    <div class="rectangle-button"></div>
+                    <div class="rectangle-button js-violence-rectangle"></div>
                 </div>
             </div>
         <!-- Error if the country doesn't exist in the database -->
@@ -695,5 +691,5 @@
         </div>
     <?php } ?>
     <script src="./src/scripts/country.js"></script>
-</body>
-</html>
+
+<?php include './includes/footer.php'; ?>
