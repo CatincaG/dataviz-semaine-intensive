@@ -1,12 +1,24 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+
 body
 {
     margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
     background: #A0CCDA;
     color: #2E2256;
     font-family: 'Rubik', sans-serif;
-    position: relative;
-    display: flex;
-    justify-content: center;
+    font-weight: 500;
+}
+
+body, html
+{
+    height: 100%;
 }
 
 .eu-stars
@@ -14,11 +26,14 @@ body
     width: 635px;
     height: 635px;
     position: absolute;
+    top: 6%;
     z-index: -10;
 }
 
 .woman-man
 {
+    width: auto;
+    height: auto;
     position: absolute;
     z-index: -9;
 }
@@ -27,6 +42,8 @@ body
 {
     width: 735px;
     height: auto;
+    position: absolute;
+    top: 25%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -34,14 +51,16 @@ body
 
 h1
 {
-    font-weight: 500;
     font-size: 3em;
+    margin-bottom: 20px;
+    font-weight: 500;
 }
 
 .first-page-container p
 {
     text-align: center;
     font-size: 1.125em;
+    margin: 20px;
 }
 
 a
@@ -55,7 +74,8 @@ a
     border-radius: 25px;
     background: #7A67BA;
     color: #ffffff;
-    padding: 10px;
+    padding: 12px;
+    margin: 20px;
 }
 
 /*
@@ -66,4 +86,6 @@ a
     position: absolute;
     font-size: 0.625em;
     color: #7A67BA;
+    position: absolute;
+    bottom: 1%;
 }
