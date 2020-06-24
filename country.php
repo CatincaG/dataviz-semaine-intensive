@@ -228,8 +228,7 @@
 </head>
 <body>
     <div class="button-back">
-        <img src="./assets/svg/icons/back-button-arrow.svg" class="back-arrow" alt="back arrow">
-        <a href="./map.php">BACK</a>
+        <a href="./map.php"><img src="./assets/svg/icons/back-button-arrow.svg" class="back-arrow" alt="back arrow">BACK</a>
     </div>
     <?php if($id) {?>
         <?php if(!empty($dataStudies) || !empty($dataWork) || !empty($dataPower) || !empty($dataHealth) || !empty($dataViolence)) { ?>
@@ -572,7 +571,10 @@
                     <p class="description"> woman were raped in <?= $violenceLastYear ?></p>
                 <!-- Error if the country doesn't exist in the category -->
                 <?php } else { ?>
-                    <p class="missing-data">Sorry, there is no data available for this country in this category</p>
+                    <div class="error-message studies-position-error">
+                        <p class="missing-data violence-error">Sorry,</p>
+                        <p class="missing-data-explanation violence-error">there is no data available for this country in this category</p>
+                    </div>
                 <?php } ?>
             </div>
             <!-- Illustration violence -->
@@ -656,20 +658,41 @@
             *
             *--------------
             * -->
-            <div class="domains">
-                <a href="#" class="studies-button  js-current-button">STUDIES</a>
-                <a href="#" class="work-button">WORK</a>
-                <a href="#" class="power-button">POWER</a>
-                <a href="#" class="health-button">HEALTH</a>
-                <a href="#" class="violence-button">VIOLENCE</a>
+            <div class="categories">
+                <div class="container-button">
+                    <a href="#" class="studies-button  js-current-button">EDUCATION</a>
+                    <div class="rectangle-button js-current-rectangle"></div>
+                </div>
+                <div class="container-button">
+                    <a href="#" class="work-button">WORK</a>
+                    <div class="rectangle-button"></div>
+                </div>
+                <div class="container-button">
+                    <a href="#" class="power-button">RESPONSABILITY</a>
+                    <div class="rectangle-button"></div>
+                </div>
+                <div class="container-button">
+                    <a href="#" class="health-button">HEALTH</a>
+                    <div class="rectangle-button"></div>
+                </div>
+                <div class="container-button">
+                    <a href="#" class="violence-button">VIOLENCE</a>
+                    <div class="rectangle-button"></div>
+                </div>
             </div>
         <!-- Error if the country doesn't exist in the database -->
         <?php } else { ?>
-            <p class="missing-data">Sorry, there is no data available for this country</p>
+            <div class="error-message general-error-position">
+                <p class="missing-data general-error">Sorry,</p>
+                <p class="missing-data-explanation general-error">there is no data available for this country</p>
+            </div>
         <?php } ?>
     <!-- Error if there is no id in the URL -->
     <?php } else { ?>
-        <p class="missing-data">Sorry, there is no data available</p>
+        <div class="error-message general-error-position">
+            <p class="missing-data general-error">Sorry,</p>
+            <p class="missing-data-explanation general-error">there is no data available</p>
+        </div>
     <?php } ?>
     <script src="./src/scripts/country.js"></script>
 </body>
