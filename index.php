@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/styles/main.css">
+    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/png">
+    <link rel="icon" href="./assets/img/favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-    <title>Welcome !</title>
+    <title>Equally</title>
 </head>
 <body>
     <img src="./assets/svg/illustrations/eu-stars.svg" alt="European Union stars" class="eu-stars">
-    <img src="./assets/svg/illustrations/first-page-all-content.svg" alt="Woman and man" class="woman-man">
+    <img src="./assets/svg/illustrations/first-page-man.svg" alt="man" class="person man">
+    <img src="./assets/svg/illustrations/first-page-woman.svg" alt="woman" class="person woman">
     <main class="first-page-container">
         <h1>Equally</h1>
         <div class="project-description">
