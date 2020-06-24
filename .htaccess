@@ -1,0 +1,35 @@
+# Cached resources - Expire headers
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault "access plus 7200 seconds"
+	ExpiresByType image/jpg 			"access plus 1 year"
+	ExpiresByType image/jpeg 			"access plus 1 year"
+	ExpiresByType image/png 			"access plus 1 year"
+	ExpiresByType image/gif 			"access plus 1 year"
+	ExpiresByType image/svg+xml			"access plus 1 year"
+	AddType image/x-icon .ico
+	ExpiresByType image/ico 			"access plus 1 year"
+	ExpiresByType image/icon 			"access plus 1 year"
+	ExpiresByType image/x-icon 			"access plus 1 year"
+	ExpiresByType text/css 				"access plus 1 week"
+	ExpiresByType text/javascript 		"access plus 1 week"
+	ExpiresByType text/html 			"access plus 7200 seconds"
+	ExpiresByType application/xhtml+xml 	"access plus 7200 seconds"
+	ExpiresByType application/javascript 	"access plus 1 week"
+	ExpiresByType application/x-javascript 	"access plus 1 week"
+	ExpiresByType application/x-shockwave-flash "access plus 1 week"
+</IfModule>
+
+# Redirections 
+
+ErrorDocument 404 /404.html
+
+# Redirect http to https
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect non-www to www
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^qwanturank\.life [NC]
+RewriteRule ^(.*)$ https://www.qwanturank.life/$1 [L,R=301]
