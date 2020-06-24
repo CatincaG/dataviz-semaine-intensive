@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php
+// Header
+include './includes/header.php';
+?>
+
+    <!-- Links -->
     <link rel="stylesheet" href="./src/styles/main.css">
-    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/png">
-    <link rel="icon" href="./assets/img/favicon.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-    <title>Equally</title>
-</head>
-<body>
+
+    <!-- Page -->
     <img src="./assets/svg/illustrations/eu-stars.svg" alt="European Union stars" class="eu-stars">
     <img src="./assets/svg/illustrations/first-page-man.svg" alt="man" class="person man">
     <img src="./assets/svg/illustrations/first-page-woman.svg" alt="woman" class="person woman">
@@ -22,5 +19,7 @@
         <a href="map.php"><div class="discover-button">Check the data</div></a>
     </main>
     <p class="last-sentence">This site has been created for educational purposes as part of the Grande Ecole curriculum of the HETIC school. The contents and data presented have not been the subject of a request for right of use. This site will in no way be exploited for commercial purposes.</p>
-</body>
-</html>
+
+<!-- Footer -->
+<?php
+include './includes/footer.php';
