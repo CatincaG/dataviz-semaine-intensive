@@ -23,6 +23,8 @@ curl_close($curl);
     <meta charset="utf-8">
     <title>Equally</title>
     <link rel="stylesheet" href="./src/styles/map.css">
+    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/png">
+    <link rel="icon" href="./assets/img/favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
